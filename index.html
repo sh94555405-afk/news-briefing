@@ -1063,7 +1063,7 @@ function renderArticles(articles) {
           <time class="card-time" datetime="${a.pubDate ? a.pubDate.toISOString() : ''}">${timeAgo(a.pubDate)}</time>
         </div>
         <h2 class="card-title">${highlight(a.title, q)}</h2>
-        ${a.desc ? `<p class="card-desc">${highlight(a.desc.slice(0,120), q)}</p>` : ''}
+        ${(a.summary || a.desc) ? `<p class="card-desc">${highlight((a.summary || a.desc).slice(0,120), q)}</p>` : ''}
         <div class="card-footer">
           <span class="card-category ${catCls}">${escHtml(a.cat)}</span>
           <button class="card-bookmark ${saved ? 'saved' : ''}"
@@ -1204,14 +1204,34 @@ async function loadFeeds(force = false) {
   if (State.articles.length === 0) renderSkeletons();
 
   try {
-    const articles = await fetchAllFeeds();
-    if (articles.length > 0) {
-      State.articles = articles;
-      State.lastFetched = new Date();
+    // news.json (GitHub Actions가 6시간마다 자동 생성)을 fetch
+    const res = await fetch('./public/news.json?t=' + Date.now());
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    if (data.articles && data.articles.length > 0) {
+      State.articles = data.articles.map(a => ({
+        ...a,
+        pubDate: a.pubDate ? new Date(a.pubDate) : null,
+        ts:      a.pubDate ? new Date(a.pubDate).getTime() : Date.now(),
+      }));
+      State.lastFetched = new Date(data.updatedAt);
+      State.updatedAtKST = data.updatedAtKST || '';
       saveArticles();
     }
   } catch (err) {
-    showError('일부 피드를 불러오지 못했어요. 네트워크를 확인해주세요.');
+    // news.json이 아직 없으면 기존 RSS 직접 수집으로 폴백
+    console.warn('news.json 없음, RSS 직접 수집으로 폴백:', err.message);
+    try {
+      const articles = await fetchAllFeeds();
+      if (articles.length > 0) {
+        State.articles = articles;
+        State.lastFetched = new Date();
+        saveArticles();
+      }
+    } catch (e) {
+      showError('뉴스를 불러오지 못했어요. 잠시 후 다시 시도해주세요.');
+    }
   } finally {
     State.isLoading = false;
     setRefreshBtnSpinning(false);
@@ -1227,8 +1247,8 @@ async function loadFeeds(force = false) {
 function updateRefreshInfo() {
   const el = document.getElementById('refreshInfo');
   if (!State.lastFetched) { el.textContent = ''; return; }
-  const active = State.sources.filter(s => s.active).length;
-  el.textContent = `${timeAgo(State.lastFetched)} 업데이트 · ${State.articles.length}개 기사 · 피드 ${active}개`;
+  const kst = State.updatedAtKST || timeAgo(State.lastFetched);
+  el.textContent = `${kst} 업데이트 · ${State.articles.length}개 기사`;
 }
 
 function setRefreshBtnSpinning(spinning) {
