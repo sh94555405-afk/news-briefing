@@ -1,0 +1,7 @@
+﻿serve.ps1
+안티그래비티_입력프롬프트.txt
+배포_가이드.md
+.kiro/
+*.log
+Thumbs.db
+.DS_Store

@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- PWA / 홈 화면 추가 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="뉴스브리핑">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="application-name" content="뉴스브리핑">
+
+  <!-- SEO / Open Graph -->
+  <meta name="description" content="부동산·경제·정치·사회·문화 핵심 핫토픽 일일 브리핑">
+  <meta property="og:title" content="일일 뉴스 브리핑">
+  <meta property="og:description" content="주요 언론사 RSS 실시간 자동 수집">
+  <meta property="og:type" content="website">
+
+  <title>일일 뉴스 브리핑</title>
+
+  <!-- 웹 매니페스트 -->
+  <link rel="manifest" href="./manifest.json">
+
+  <!-- 아이콘 - 실제 파일 사용 (base64 제거) -->
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="./apple-touch-icon.png">
+
+  <style>
+    /* ── 리셋 & 기본 ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:          #0f172a;
+      --bg-card:     #1e293b;
+      --bg-input:    #1e293b;
+      --border:      #334155;
+      --accent:      #3b82f6;
+      --accent-h:    #2563eb;
+      --text-1:      #f1f5f9;
+      --text-2:      #94a3b8;
+      --text-3:      #64748b;
+      --red:         #ef4444;
+      --green:       #22c55e;
+      --yellow:      #f59e0b;
+      --purple:      #a855f7;
+      --radius:      12px;
+      --safe-top:    env(safe-area-inset-top, 0px);
+      --safe-bot:    env(safe-area-inset-bottom, 0px);
+    }
+    html { height: 100%; background: var(--bg); }
+    body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                   "Malgun Gothic", "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--text-1);
+      overflow: hidden;
+      /* iOS 상태바 대응 */
+      padding-top: var(--safe-top);
+      padding-bottom: var(--safe-bot);
+    }
+
+    /* ── 레이아웃 ────────────────────────────────── */
+    #app {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── 헤더 ────────────────────────────────────── */
+    header {
+      flex-shrink: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px 0;
+      z-index: 10;
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-title img {
+      width: 28px; height: 28px;
+      border-radius: 6px;
+    }
+    .header-title h1 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-1);
+    }
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-2);
+      padding: 6px;
+      border-radius: 8px;
+      font-size: 18px;
+      line-height: 1;
+      transition: color .15s, background .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .icon-btn:hover, .icon-btn:focus-visible {
+      color: var(--text-1);
+      background: var(--bg-card);
+    }
+
+    /* ── 검색창 ─────────────────────────────────── */
+    .search-wrap {
+      position: relative;
+      margin-bottom: 10px;
+    }
+    .search-wrap svg {
+      position: absolute;
+      left: 12px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-3);
+      pointer-events: none;
+    }
+    #searchInput {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-1);
+      font-size: 14px;
+      padding: 9px 36px 9px 36px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    #searchInput:focus { border-color: var(--accent); }
+    #searchInput::placeholder { color: var(--text-3); }
+    .search-clear {
+      position: absolute;
+      right: 10px; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none;
+      cursor: pointer; color: var(--text-3);
+      font-size: 16px; padding: 2px;
+      display: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .search-clear.visible { display: block; }
+
+    /* ── 탭 네비게이션 ───────────────────────────── */
+    .tabs {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 0;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-3);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 10px 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color .15s, border-color .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── 콘텐츠 영역 ──────────────────────────────── */
+    main {
+      flex: 1;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      padding: 12px 12px 24px;
+    }
+
+    /* ── 새로고침 바 ──────────────────────────────── */
+    .refresh-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .refresh-info {
+      font-size: 11px;
+      color: var(--text-3);
+    }
+    .refresh-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-2);
+      font-size: 12px;
+      padding: 4px 10px;
+      cursor: pointer;
+      transition: border-color .15s, color .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .refresh-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .refresh-btn svg { transition: transform .6s; }
+    .refresh-btn.spinning svg { animation: spin .6s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── 뉴스 카드 ────────────────────────────────── */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .news-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      cursor: pointer;
+      transition: border-color .15s, transform .1s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+    }
+    .news-card:hover { border-color: var(--accent); }
+    .news-card:active { transform: scale(0.99); }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .card-source {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--text-3);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .3px;
+    }
+    .source-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .card-time {
+      font-size: 11px;
+      color: var(--text-3);
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--text-1);
+      margin-bottom: 6px;
+      word-break: keep-all;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .card-category {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      background: rgba(59,130,246,.15);
+      color: var(--accent);
+    }
+    .card-bookmark {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-3);
+      font-size: 16px;
+      padding: 2px 4px;
+      transition: color .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .card-bookmark.saved { color: var(--yellow); }
+
+    /* ── 카테고리 색상 ─────────────────────────────── */
+    .cat-부동산 { background: rgba(239,68,68,.15); color: var(--red); }
+    .cat-경제    { background: rgba(34,197,94,.15); color: var(--green); }
+    .cat-정치    { background: rgba(168,85,247,.15); color: var(--purple); }
+    .cat-사회    { background: rgba(245,158,11,.15); color: var(--yellow); }
+    .cat-문화    { background: rgba(59,130,246,.15); color: var(--accent); }
+    .cat-IT     { background: rgba(20,184,166,.15); color: #14b8a6; }
+    .cat-국제    { background: rgba(249,115,22,.15); color: #f97316; }
+    .cat-스포츠  { background: rgba(236,72,153,.15); color: #ec4899; }
+
+    /* ── 스켈레톤 로더 ────────────────────────────── */
+    .skeleton-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+    .skeleton-line {
+      background: linear-gradient(90deg, var(--border) 25%, #3d4f6b 50%, var(--border) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 4px;
+      height: 12px;
+      margin-bottom: 8px;
+    }
+    .skeleton-line.wide { width: 90%; }
+    .skeleton-line.mid  { width: 65%; }
+    .skeleton-line.short { width: 40%; margin-bottom: 0; }
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* ── 빈 상태 ─────────────────────────────────── */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 60px 20px;
+      color: var(--text-3);
+      text-align: center;
+    }
+    .empty-state .icon { font-size: 48px; }
+    .empty-state p { font-size: 14px; line-height: 1.6; }
+
+    /* ── 에러 배너 ────────────────────────────────── */
+    .error-banner {
+      background: rgba(239,68,68,.12);
+      border: 1px solid rgba(239,68,68,.3);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #fca5a5;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .error-banner.visible { display: block; }
+
+    /* ── 보관함 태그 필터 ─────────────────────────── */
+    .tag-filter {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      margin-bottom: 10px;
+    }
+    .tag-filter::-webkit-scrollbar { display: none; }
+    .tag-chip {
+      flex-shrink: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--text-2);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      cursor: pointer;
+      transition: border-color .15s, color .15s, background .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tag-chip.active {
+      background: rgba(59,130,246,.18);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── RSS 소스 관리 패널 ───────────────────────── */
+    #sourcePanelOverlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      z-index: 50;
+      backdrop-filter: blur(2px);
+    }
+    #sourcePanelOverlay.open { display: flex; align-items: flex-end; }
+    #sourcePanel {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border-radius: 20px 20px 0 0;
+      padding: 20px 16px calc(20px + var(--safe-bot));
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .panel-handle {
+      width: 36px; height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      margin: 0 auto 16px;
+    }
+    .panel-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .source-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .source-item:last-child { border-bottom: none; }
+    .source-info { flex: 1; min-width: 0; }
+    .source-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-1);
+    }
+    .source-url {
+      font-size: 11px;
+      color: var(--text-3);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .toggle-switch {
+      position: relative;
+      width: 44px; height: 24px;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .toggle-switch input {
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .toggle-track {
+      position: absolute;
+      inset: 0;
+      background: var(--border);
+      border-radius: 24px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .toggle-track::after {
+      content: '';
+      position: absolute;
+      left: 3px; top: 3px;
+      width: 18px; height: 18px;
+      background: white;
+      border-radius: 50%;
+      transition: transform .2s;
+    }
+    .toggle-switch input:checked + .toggle-track { background: var(--accent); }
+    .toggle-switch input:checked + .toggle-track::after { transform: translateX(20px); }
+
+    /* ── 하단 네비게이션 ──────────────────────────── */
+    .bottom-nav {
+      flex-shrink: 0;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      align-items: stretch;
+      padding-bottom: var(--safe-bot);
+    }
+    .nav-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      padding: 8px 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-3);
+      font-size: 10px;
+      font-weight: 600;
+      transition: color .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .nav-btn svg { width: 22px; height: 22px; }
+    .nav-btn.active { color: var(--accent); }
+
+    /* ── 토스트 알림 ──────────────────────────────── */
+    #toast {
+      position: fixed;
+      bottom: calc(70px + var(--safe-bot) + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1e293b;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 10px 20px;
+      font-size: 13px;
+      color: var(--text-1);
+      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+      opacity: 0;
+      transition: opacity .25s, transform .25s;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 100;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── 설치 배너 ────────────────────────────────── */
+    #installBanner {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: rgba(59,130,246,.12);
+      border: 1px solid rgba(59,130,246,.3);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+    }
+    #installBanner.visible { display: flex; }
+    #installBanner p {
+      flex: 1;
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+    .install-btn {
+      flex-shrink: 0;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 12px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .install-close {
+      background: none; border: none;
+      color: var(--text-3); cursor: pointer;
+      font-size: 16px; padding: 2px;
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <!-- 헤더 -->
+  <header>
+    <div class="header-top">
+      <div class="header-title">
+        <img src="./apple-touch-icon.png" alt="뉴스브리핑 로고" width="28" height="28" onerror="this.style.display='none'">
+        <h1>뉴스 브리핑</h1>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="btnSources" aria-label="RSS 피드 관리" title="RSS 피드 관리">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="btnRefreshTop" aria-label="새로고침" title="새로고침">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="search" id="searchInput" placeholder="뉴스 검색..." autocomplete="off" spellcheck="false" aria-label="뉴스 검색">
+      <button class="search-clear" id="searchClear" aria-label="검색어 지우기">✕</button>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="카테고리">
+      <button class="tab-btn active" data-cat="전체" role="tab" aria-selected="true">전체</button>
+      <button class="tab-btn" data-cat="부동산" role="tab" aria-selected="false">🏠 부동산</button>
+      <button class="tab-btn" data-cat="경제" role="tab" aria-selected="false">📈 경제</button>
+      <button class="tab-btn" data-cat="정치" role="tab" aria-selected="false">🏛️ 정치</button>
+      <button class="tab-btn" data-cat="사회" role="tab" aria-selected="false">👥 사회</button>
+      <button class="tab-btn" data-cat="문화" role="tab" aria-selected="false">🎭 문화</button>
+      <button class="tab-btn" data-cat="IT" role="tab" aria-selected="false">💻 IT</button>
+      <button class="tab-btn" data-cat="국제" role="tab" aria-selected="false">🌏 국제</button>
+      <button class="tab-btn" data-cat="스포츠" role="tab" aria-selected="false">⚽ 스포츠</button>
+    </div>
+  </header>
+
+  <!-- 메인 콘텐츠 -->
+  <main id="main" role="main">
+    <!-- PWA 설치 배너 -->
+    <div id="installBanner" role="banner" aria-label="앱 설치 안내">
+      <p>📱 홈 화면에 추가하면 전체화면으로 빠르게 열 수 있어요</p>
+      <button class="install-btn" id="btnInstall">설치</button>
+      <button class="install-close" id="btnInstallClose" aria-label="닫기">✕</button>
+    </div>
+
+    <!-- 에러 배너 -->
+    <div class="error-banner" id="errorBanner" role="alert" aria-live="polite"></div>
+
+    <!-- 새로고침 바 -->
+    <div class="refresh-bar" id="refreshBar" style="display:none">
+      <span class="refresh-info" id="refreshInfo">--</span>
+      <button class="refresh-btn" id="refreshBtn" aria-label="피드 새로고침">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/>
+        </svg>
+        새로고침
+      </button>
+    </div>
+
+    <!-- 뉴스 목록 -->
+    <div class="news-list" id="newsList" aria-live="polite" aria-label="뉴스 목록"></div>
+  </main>
+
+  <!-- 하단 네비게이션 -->
+  <nav class="bottom-nav" aria-label="메인 네비게이션">
+    <button class="nav-btn active" data-view="news" aria-label="뉴스 피드">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+        <path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/>
+      </svg>
+      피드
+    </button>
+    <button class="nav-btn" data-view="bookmark" aria-label="보관함">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+      </svg>
+      보관함
+    </button>
+    <button class="nav-btn" data-view="trending" aria-label="트렌딩">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+      </svg>
+      트렌딩
+    </button>
+  </nav>
+</div>
+
+<!-- RSS 소스 관리 패널 -->
+<div id="sourcePanelOverlay" role="dialog" aria-modal="true" aria-label="RSS 피드 관리">
+  <div id="sourcePanel">
+    <div class="panel-handle" aria-hidden="true"></div>
+    <div class="panel-title">📡 RSS 피드 관리</div>
+    <div id="sourceList"></div>
+  </div>
+</div>
+
+<!-- 토스트 -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+'use strict';
+
+/* ════════════════════════════════════════════════════════
+   1. RSS 피드 소스 정의
+   - allorigins CORS 프록시를 통해 브라우저에서 직접 파싱
+   - Rate-limit: 각 소스마다 최소 600ms 지연
+   - User-Agent: 프록시가 적용하므로 클라이언트에서 별도 설정 불필요
+   ════════════════════════════════════════════════════════ */
+const RSS_SOURCES = [
+  /* ─ 부동산 ─ */
+  { id:'r01', name:'연합뉴스 부동산', url:'https://www.yonhapnewstv.co.kr/browse/feed/', cat:'부동산', color:'#ef4444', active:false },
+  { id:'r02', name:'부동산114',       url:'https://news.google.com/rss/search?q=부동산&hl=ko&gl=KR&ceid=KR:ko', cat:'부동산', color:'#ef4444', active:true },
+  { id:'r03', name:'KB부동산',        url:'https://news.google.com/rss/search?q=아파트+시세&hl=ko&gl=KR&ceid=KR:ko', cat:'부동산', color:'#ef4444', active:false },
+
+  /* ─ 경제 ─ */
+  { id:'e01', name:'한국경제',        url:'https://www.hankyung.com/feed/all-news', cat:'경제', color:'#22c55e', active:true },
+  { id:'e02', name:'매일경제',        url:'https://www.mk.co.kr/rss/40300001/', cat:'경제', color:'#22c55e', active:false },
+  { id:'e03', name:'조선비즈',        url:'https://biz.chosun.com/RSS/economy.xml', cat:'경제', color:'#22c55e', active:false },
+  { id:'e04', name:'Google 경제뉴스', url:'https://news.google.com/rss/search?q=경제+금리&hl=ko&gl=KR&ceid=KR:ko', cat:'경제', color:'#22c55e', active:false },
+
+  /* ─ 정치 ─ */
+  { id:'p01', name:'연합뉴스 정치',   url:'https://www.yonhapnews.co.kr/rss/politics.xml', cat:'정치', color:'#a855f7', active:true },
+  { id:'p02', name:'한겨레',          url:'https://www.hani.co.kr/rss/', cat:'정치', color:'#a855f7', active:false },
+  { id:'p03', name:'Google 정치뉴스', url:'https://news.google.com/rss/search?q=국회+정치&hl=ko&gl=KR&ceid=KR:ko', cat:'정치', color:'#a855f7', active:false },
+
+  /* ─ 사회 ─ */
+  { id:'s01', name:'JTBC 뉴스',       url:'https://fs.jtbc.co.kr/RSS/society.xml', cat:'사회', color:'#f59e0b', active:false },
+  { id:'s02', name:'KBS 뉴스',        url:'https://news.kbs.co.kr/data/rss/rss_society.xml', cat:'사회', color:'#f59e0b', active:true },
+  { id:'s03', name:'SBS 뉴스',        url:'https://news.sbs.co.kr/news/RSS/SBS_NewsRSS.xml', cat:'사회', color:'#f59e0b', active:false },
+
+  /* ─ 문화 ─ */
+  { id:'c01', name:'문화일보',        url:'https://news.google.com/rss/search?q=문화+예술&hl=ko&gl=KR&ceid=KR:ko', cat:'문화', color:'#3b82f6', active:false },
+  { id:'c02', name:'경향신문 문화',   url:'https://www.khan.co.kr/rss/rssdata/culture_news.xml', cat:'문화', color:'#3b82f6', active:false },
+
+  /* ─ IT ─ */
+  { id:'i01', name:'ZDNet Korea',     url:'https://zdnet.co.kr/rss/', cat:'IT', color:'#14b8a6', active:true },
+  { id:'i02', name:'디지털타임스',    url:'https://news.google.com/rss/search?q=IT+인공지능&hl=ko&gl=KR&ceid=KR:ko', cat:'IT', color:'#14b8a6', active:false },
+  { id:'i03', name:'블로터',          url:'https://www.bloter.net/feed', cat:'IT', color:'#14b8a6', active:false },
+
+  /* ─ 국제 ─ */
+  { id:'w01', name:'연합뉴스 국제',   url:'https://www.yonhapnews.co.kr/rss/international.xml', cat:'국제', color:'#f97316', active:true },
+  { id:'w02', name:'Google 세계뉴스', url:'https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRGx1YlY4U0FtdHZHZ0pMVWlnQVAB?hl=ko&gl=KR&ceid=KR:ko', cat:'국제', color:'#f97316', active:false },
+
+  /* ─ 스포츠 ─ */
+  { id:'sp1', name:'스포츠서울',      url:'https://www.sportsseoul.com/rss/allArticle.xml', cat:'스포츠', color:'#ec4899', active:false },
+  { id:'sp2', name:'Google 스포츠',   url:'https://news.google.com/rss/search?q=스포츠+야구+축구&hl=ko&gl=KR&ceid=KR:ko', cat:'스포츠', color:'#ec4899', active:true },
+];
+
+/* ════════════════════════════════════════════════════════
+   2. CORS 프록시 설정
+   allorigins: 무료, 캐시 내장, rate-limit 완화
+   백업: corsproxy.io
+   ════════════════════════════════════════════════════════ */
+const PROXY_URL = (url) =>
+  `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+const PROXY_BACKUP = (url) =>
+  `https://corsproxy.io/?${encodeURIComponent(url)}`;
+
+/* ════════════════════════════════════════════════════════
+   3. 앱 상태
+   ════════════════════════════════════════════════════════ */
+const State = {
+  articles:    [],       // 모든 기사
+  bookmarks:   new Set(),// 북마크된 기사 link
+  activeCat:   '전체',
+  activeView:  'news',
+  searchQuery: '',
+  sources:     [],       // RSS_SOURCES + localStorage 설정 병합
+  lastFetched: null,
+  isLoading:   false,
+  deferredInstall: null, // PWA install prompt
+};
+
+/* ════════════════════════════════════════════════════════
+   4. 스토리지 헬퍼
+   ════════════════════════════════════════════════════════ */
+const Store = {
+  get: (key, def = null) => {
+    try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : def; } catch { return def; }
+  },
+  set: (key, val) => {
+    try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
+  },
+};
+
+function loadPersistedState() {
+  State.bookmarks = new Set(Store.get('bookmarks', []));
+  const savedSources = Store.get('sources', null);
+  State.sources = RSS_SOURCES.map(src => {
+    if (savedSources) {
+      const saved = savedSources.find(s => s.id === src.id);
+      if (saved !== undefined) return { ...src, active: saved.active };
+    }
+    return { ...src };
+  });
+  const cached = Store.get('articles_cache', null);
+  if (cached && cached.ts && Date.now() - cached.ts < 6 * 60 * 60 * 1000) {
+    State.articles = cached.data;
+    State.lastFetched = new Date(cached.ts);
+  }
+}
+
+function saveSourceState() {
+  Store.set('sources', State.sources.map(s => ({ id: s.id, active: s.active })));
+}
+
+function saveArticles() {
+  Store.set('articles_cache', { ts: Date.now(), data: State.articles.slice(0, 200) });
+}
+
+/* ════════════════════════════════════════════════════════
+   5. RSS 파싱 & 수집 엔진
+   ════════════════════════════════════════════════════════ */
+
+/** allorigins 프록시로 RSS XML 가져오기 (Rate-limit: 최소 delay) */
+async function fetchRSS(source, delay = 0) {
+  if (delay > 0) await sleep(delay);
+  const targetUrl = PROXY_URL(source.url);
+  const ctrl = new AbortController();
+  const tid = setTimeout(() => ctrl.abort(), 12000);
+
+  try {
+    const res = await fetch(targetUrl, {
+      signal: ctrl.signal,
+      headers: { 'Accept': 'application/json' },
+    });
+    clearTimeout(tid);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+    const xml = json.contents;
+    if (!xml) throw new Error('empty response');
+    return parseRSS(xml, source);
+  } catch (err) {
+    clearTimeout(tid);
+    // 백업 프록시 시도
+    if (!err.name || err.name !== 'AbortError') {
+      return fetchRSSBackup(source);
+    }
+    return [];
+  }
+}
+
+async function fetchRSSBackup(source) {
+  const ctrl = new AbortController();
+  const tid = setTimeout(() => ctrl.abort(), 10000);
+  try {
+    const res = await fetch(PROXY_BACKUP(source.url), {
+      signal: ctrl.signal,
+      headers: { 'Accept': 'text/xml, application/rss+xml, application/xml' },
+    });
+    clearTimeout(tid);
+    if (!res.ok) throw new Error(`Backup HTTP ${res.status}`);
+    const xml = await res.text();
+    return parseRSS(xml, source);
+  } catch {
+    clearTimeout(tid);
+    return [];
+  }
+}
+
+function parseRSS(xmlStr, source) {
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(xmlStr, 'text/xml');
+
+    // Atom 피드 지원
+    const isAtom = doc.querySelector('feed') !== null;
+    const items = isAtom
+      ? Array.from(doc.querySelectorAll('entry'))
+      : Array.from(doc.querySelectorAll('item'));
+
+    return items.slice(0, 15).map(item => {
+      const get = (sel) => item.querySelector(sel)?.textContent?.trim() ?? '';
+      const getAttr = (sel, attr) => item.querySelector(sel)?.getAttribute(attr)?.trim() ?? '';
+
+      const title = cleanText(get('title'));
+      const link  = isAtom
+        ? (getAttr('link', 'href') || get('id'))
+        : (get('link') || get('guid'));
+      const desc  = cleanText(get('description') || get('summary') || get('content'));
+      const pubDate = parseDate(get('pubDate') || get('updated') || get('published') || get('dc\\:date') || get('date'));
+
+      if (!title || !link) return null;
+
+      return {
+        id:      btoa(unescape(encodeURIComponent(link))).slice(0, 20),
+        title,
+        desc,
+        link,
+        source:  source.name,
+        sourceId: source.id,
+        cat:     source.cat,
+        pubDate,
+        ts:      pubDate ? pubDate.getTime() : Date.now(),
+      };
+    }).filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+
+/** 배치 수집 – 동시 최대 4개 + 600ms 간격으로 IP 차단 방지 */
+async function fetchAllFeeds() {
+  const activeSources = State.sources.filter(s => s.active);
+  if (activeSources.length === 0) return [];
+
+  const BATCH = 6;
+  const DELAY_PER = 200; // ms
+  const results = [];
+
+  for (let i = 0; i < activeSources.length; i += BATCH) {
+    const batch = activeSources.slice(i, i + BATCH);
+    const batchResults = await Promise.allSettled(
+      batch.map((src, idx) => fetchRSS(src, idx * DELAY_PER))
+    );
+    batchResults.forEach(r => {
+      if (r.status === 'fulfilled') results.push(...r.value);
+    });
+    // 다음 배치 전 추가 대기
+    if (i + BATCH < activeSources.length) await sleep(300);
+  }
+
+  // 중복 제거 (link 기준) + 최신순 정렬
+  const seen = new Set();
+  return results
+    .filter(a => {
+      if (seen.has(a.link)) return false;
+      seen.add(a.link);
+      return true;
+    })
+    .sort((a, b) => b.ts - a.ts);
+}
+
+/* ════════════════════════════════════════════════════════
+   6. 유틸리티
+   ════════════════════════════════════════════════════════ */
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+function cleanText(str) {
+  return (str || '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function parseDate(str) {
+  if (!str) return null;
+  try {
+    const d = new Date(str);
+    return isNaN(d.getTime()) ? null : d;
+  } catch { return null; }
+}
+
+function timeAgo(date) {
+  if (!date) return '';
+  const sec = Math.floor((Date.now() - date.getTime()) / 1000);
+  if (sec < 60)  return '방금';
+  if (sec < 3600) return `${Math.floor(sec/60)}분 전`;
+  if (sec < 86400) return `${Math.floor(sec/3600)}시간 전`;
+  if (sec < 604800) return `${Math.floor(sec/86400)}일 전`;
+  return date.toLocaleDateString('ko-KR', { month:'short', day:'numeric' });
+}
+
+function highlight(text, query) {
+  if (!query) return escHtml(text);
+  const esc = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return escHtml(text).replace(
+    new RegExp(`(${esc})`, 'gi'),
+    '<mark style="background:rgba(59,130,246,.35);color:#93c5fd;border-radius:2px">$1</mark>'
+  );
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/* ════════════════════════════════════════════════════════
+   7. 필터링 & 뷰 로직
+   ════════════════════════════════════════════════════════ */
+function getFilteredArticles() {
+  let list = State.activeView === 'bookmark'
+    ? State.articles.filter(a => State.bookmarks.has(a.link))
+    : State.articles;
+
+  if (State.activeCat !== '전체') {
+    list = list.filter(a => a.cat === State.activeCat);
+  }
+  if (State.searchQuery) {
+    const q = State.searchQuery.toLowerCase();
+    list = list.filter(a =>
+      a.title.toLowerCase().includes(q) ||
+      a.desc.toLowerCase().includes(q) ||
+      a.source.toLowerCase().includes(q)
+    );
+  }
+  return list;
+}
+
+function getTrending() {
+  // 최근 24시간 기사에서 키워드 빈도수 계산
+  const cutoff = Date.now() - 24 * 60 * 60 * 1000;
+  const recent = State.articles.filter(a => a.ts > cutoff);
+  const freq = {};
+  const stopwords = new Set(['있다','이다','하다','있는','없는','했다','됩니다','합니다',
+    '에서','으로','에서는','에서도','이번','지난','오늘','내일','관련','대해',
+    '대한','위한','통해','에따르면','따르면','이에','이를','것으로','것이다',
+    'the','a','in','of','to','and','for','is','are','was']);
+
+  recent.forEach(a => {
+    const words = (a.title + ' ' + a.desc)
+      .replace(/[^\uAC00-\uD7A3a-zA-Z0-9\s]/g, ' ')
+      .split(/\s+/)
+      .filter(w => w.length >= 2 && !stopwords.has(w));
+    words.forEach(w => { freq[w] = (freq[w] || 0) + 1; });
+  });
+
+  return Object.entries(freq)
+    .filter(([_, c]) => c >= 2)
+    .sort(([,a],[,b]) => b - a)
+    .slice(0, 30)
+    .map(([word, count]) => ({ word, count }));
+}
+
+/* ════════════════════════════════════════════════════════
+   8. 렌더링
+   ════════════════════════════════════════════════════════ */
+function renderSkeletons(n = 5) {
+  const list = document.getElementById('newsList');
+  list.innerHTML = Array.from({length:n}, () => `
+    <div class="skeleton-card" aria-hidden="true">
+      <div class="skeleton-line short" style="width:30%;margin-bottom:10px"></div>
+      <div class="skeleton-line wide"></div>
+      <div class="skeleton-line mid"></div>
+      <div class="skeleton-line short" style="width:20%;margin-top:4px"></div>
+    </div>
+  `).join('');
+}
+
+function renderArticles(articles) {
+  const list = document.getElementById('newsList');
+  const q = State.searchQuery;
+
+  if (articles.length === 0) {
+    list.innerHTML = `
+      <div class="empty-state" role="status">
+        <span class="icon" aria-hidden="true">${State.activeView === 'bookmark' ? '🔖' : '📰'}</span>
+        <p>${State.activeView === 'bookmark'
+          ? '보관한 기사가 없어요.<br>카드 오른쪽 아래 ★ 버튼으로 저장하세요.'
+          : q ? `"${escHtml(q)}"에 해당하는 기사가 없어요.` : '불러올 기사가 없어요.<br>RSS 피드를 확인해주세요.'
+        }</p>
+      </div>`;
+    return;
+  }
+
+  list.innerHTML = articles.map(a => {
+    const saved = State.bookmarks.has(a.link);
+    const catCls = `cat-${a.cat}`;
+    return `
+      <article class="news-card" tabindex="0" role="article"
+        data-link="${escHtml(a.link)}"
+        aria-label="${escHtml(a.title)}">
+        <div class="card-meta">
+          <span class="card-source">
+            <span class="source-dot" style="background:${getSourceColor(a.sourceId)}" aria-hidden="true"></span>
+            ${escHtml(a.source)}
+          </span>
+          <time class="card-time" datetime="${a.pubDate ? a.pubDate.toISOString() : ''}">${timeAgo(a.pubDate)}</time>
+        </div>
+        <h2 class="card-title">${highlight(a.title, q)}</h2>
+        ${a.desc ? `<p class="card-desc">${highlight(a.desc.slice(0,120), q)}</p>` : ''}
+        <div class="card-footer">
+          <span class="card-category ${catCls}">${escHtml(a.cat)}</span>
+          <button class="card-bookmark ${saved ? 'saved' : ''}"
+            aria-label="${saved ? '보관 취소' : '보관하기'}"
+            aria-pressed="${saved}"
+            data-link="${escHtml(a.link)}">
+            ${saved ? '★' : '☆'}
+          </button>
+        </div>
+      </article>`;
+  }).join('');
+}
+
+function renderTrending() {
+  const list = document.getElementById('newsList');
+  const trends = getTrending();
+
+  if (trends.length === 0) {
+    list.innerHTML = `<div class="empty-state"><span class="icon">📊</span><p>트렌딩 키워드를 분석 중이에요.<br>먼저 피드를 새로고침해주세요.</p></div>`;
+    return;
+  }
+
+  list.innerHTML = `
+    <div style="margin-bottom:12px">
+      <p style="font-size:12px;color:var(--text-3);margin-bottom:12px">최근 24시간 기준 · 빈도수 상위 키워드</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        ${trends.map((t, i) => `
+          <button class="tag-chip"
+            style="font-size:13px;padding:7px 14px;cursor:pointer"
+            data-search="${escHtml(t.word)}"
+            aria-label="${escHtml(t.word)} 검색">
+            <span style="color:var(--text-3);margin-right:4px;font-size:11px">${i+1}</span>
+            ${escHtml(t.word)}
+            <span style="color:var(--text-3);font-size:11px;margin-left:4px">${t.count}</span>
+          </button>
+        `).join('')}
+      </div>
+    </div>`;
+
+  // 트렌딩 키워드 클릭 → 검색
+  list.querySelectorAll('[data-search]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const word = btn.dataset.search;
+      document.getElementById('searchInput').value = word;
+      State.searchQuery = word;
+      document.getElementById('searchClear').classList.add('visible');
+      setView('news');
+    });
+  });
+}
+
+function renderBookmarkView() {
+  const list = document.getElementById('newsList');
+  // 태그 필터 (카테고리별)
+  const cats = [...new Set(
+    State.articles.filter(a => State.bookmarks.has(a.link)).map(a => a.cat)
+  )];
+
+  const tagBar = cats.length > 1 ? `
+    <div class="tag-filter" role="group" aria-label="카테고리 필터">
+      <button class="tag-chip active" data-bcat="전체">전체</button>
+      ${cats.map(c => `<button class="tag-chip" data-bcat="${escHtml(c)}">${escHtml(c)}</button>`).join('')}
+    </div>` : '';
+
+  // 임시 컨테이너로 태그 삽입
+  const wrap = document.createElement('div');
+  wrap.innerHTML = tagBar;
+  list.parentNode.insertBefore(wrap, list);
+
+  wrap.querySelectorAll('[data-bcat]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      wrap.querySelectorAll('[data-bcat]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      State.activeCat = btn.dataset.bcat;
+      renderArticles(getFilteredArticles());
+    });
+  });
+
+  // 실제 목록 렌더
+  renderArticles(getFilteredArticles());
+}
+
+function getSourceColor(id) {
+  const src = State.sources.find(s => s.id === id);
+  return src ? src.color : '#3b82f6';
+}
+
+/* ════════════════════════════════════════════════════════
+   9. 뷰 전환
+   ════════════════════════════════════════════════════════ */
+function setView(view) {
+  State.activeView = view;
+
+  // 하단 탭 업데이트
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.view === view);
+  });
+
+  // 기존 태그 필터 제거 (북마크 뷰 시 생성된 것)
+  document.querySelectorAll('[data-bcat]')
+    .forEach(el => el.closest('div')?.remove?.());
+
+  const refreshBar = document.getElementById('refreshBar');
+  const header = document.querySelector('header');
+
+  if (view === 'trending') {
+    refreshBar.style.display = 'none';
+    header.style.display = '';
+    renderTrending();
+  } else if (view === 'bookmark') {
+    refreshBar.style.display = 'none';
+    header.style.display = '';
+    renderBookmarkView();
+  } else {
+    refreshBar.style.display = 'flex';
+    header.style.display = '';
+    renderArticles(getFilteredArticles());
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   10. 피드 로드
+   ════════════════════════════════════════════════════════ */
+async function loadFeeds(force = false) {
+  if (State.isLoading) return;
+
+  // 캐시가 신선하면(6시간 미만) 강제 아닐 경우 스킵
+  if (!force && State.lastFetched && Date.now() - State.lastFetched.getTime() < 6 * 60 * 60 * 1000) {
+    renderArticles(getFilteredArticles());
+    updateRefreshInfo();
+    return;
+  }
+
+  State.isLoading = true;
+  document.getElementById('errorBanner').classList.remove('visible');
+  setRefreshBtnSpinning(true);
+
+  if (State.articles.length === 0) renderSkeletons();
+
+  try {
+    const articles = await fetchAllFeeds();
+    if (articles.length > 0) {
+      State.articles = articles;
+      State.lastFetched = new Date();
+      saveArticles();
+    }
+  } catch (err) {
+    showError('일부 피드를 불러오지 못했어요. 네트워크를 확인해주세요.');
+  } finally {
+    State.isLoading = false;
+    setRefreshBtnSpinning(false);
+    updateRefreshInfo();
+    if (State.activeView !== 'trending') {
+      renderArticles(getFilteredArticles());
+    }
+    document.getElementById('refreshBar').style.display =
+      State.activeView === 'news' ? 'flex' : 'none';
+  }
+}
+
+function updateRefreshInfo() {
+  const el = document.getElementById('refreshInfo');
+  if (!State.lastFetched) { el.textContent = ''; return; }
+  const active = State.sources.filter(s => s.active).length;
+  el.textContent = `${timeAgo(State.lastFetched)} 업데이트 · ${State.articles.length}개 기사 · 피드 ${active}개`;
+}
+
+function setRefreshBtnSpinning(spinning) {
+  document.getElementById('refreshBtn').classList.toggle('spinning', spinning);
+  document.getElementById('btnRefreshTop').classList.toggle('spinning', spinning);
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorBanner');
+  el.textContent = '⚠️ ' + msg;
+  el.classList.add('visible');
+}
+
+/* ════════════════════════════════════════════════════════
+   11. RSS 소스 패널
+   ════════════════════════════════════════════════════════ */
+function renderSourcePanel() {
+  const container = document.getElementById('sourceList');
+  const groups = {};
+  State.sources.forEach(s => {
+    if (!groups[s.cat]) groups[s.cat] = [];
+    groups[s.cat].push(s);
+  });
+
+  container.innerHTML = Object.entries(groups).map(([cat, srcs]) => `
+    <div style="margin-bottom:4px">
+      <div style="font-size:11px;font-weight:700;color:var(--text-3);
+                  text-transform:uppercase;letter-spacing:.5px;padding:10px 0 6px">
+        ${escHtml(cat)}
+      </div>
+      ${srcs.map(s => `
+        <div class="source-item">
+          <div class="source-info">
+            <div class="source-name">${escHtml(s.name)}</div>
+            <div class="source-url">${escHtml(s.url.replace('https://','').slice(0,50))}…</div>
+          </div>
+          <label class="toggle-switch" aria-label="${escHtml(s.name)} 활성화">
+            <input type="checkbox" ${s.active ? 'checked' : ''} data-src-id="${s.id}">
+            <span class="toggle-track"></span>
+          </label>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+
+  container.querySelectorAll('[data-src-id]').forEach(chk => {
+    chk.addEventListener('change', () => {
+      const src = State.sources.find(s => s.id === chk.dataset.srcId);
+      if (src) { src.active = chk.checked; saveSourceState(); }
+    });
+  });
+}
+
+/* ════════════════════════════════════════════════════════
+   12. 이벤트 연결
+   ════════════════════════════════════════════════════════ */
+function bindEvents() {
+  // 탭 (카테고리)
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      State.activeCat = btn.dataset.cat;
+      if (State.activeView !== 'news') setView('news');
+      else renderArticles(getFilteredArticles());
+    });
+  });
+
+  // 하단 네비게이션
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => setView(btn.dataset.view));
+  });
+
+  // 검색
+  const searchInput = document.getElementById('searchInput');
+  const searchClear = document.getElementById('searchClear');
+  let searchTimer;
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim();
+    searchClear.classList.toggle('visible', q.length > 0);
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      State.searchQuery = q;
+      if (State.activeView !== 'news' && State.activeView !== 'bookmark') setView('news');
+      else renderArticles(getFilteredArticles());
+    }, 250);
+  });
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    State.searchQuery = '';
+    searchClear.classList.remove('visible');
+    renderArticles(getFilteredArticles());
+  });
+
+  // 새로고침
+  document.getElementById('refreshBtn').addEventListener('click', () => loadFeeds(true));
+  document.getElementById('btnRefreshTop').addEventListener('click', () => loadFeeds(true));
+
+  // 뉴스 카드 클릭 (이벤트 위임)
+  document.getElementById('newsList').addEventListener('click', e => {
+    const bookmark = e.target.closest('.card-bookmark');
+    if (bookmark) {
+      e.stopPropagation();
+      toggleBookmark(bookmark.dataset.link);
+      return;
+    }
+    const card = e.target.closest('.news-card');
+    if (card && card.dataset.link) {
+      window.open(card.dataset.link, '_blank', 'noopener,noreferrer');
+    }
+  });
+  // 키보드 접근성
+  document.getElementById('newsList').addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const card = e.target.closest('.news-card');
+      if (card) {
+        e.preventDefault();
+        window.open(card.dataset.link, '_blank', 'noopener,noreferrer');
+      }
+    }
+  });
+
+  // RSS 소스 패널
+  document.getElementById('btnSources').addEventListener('click', () => {
+    renderSourcePanel();
+    document.getElementById('sourcePanelOverlay').classList.add('open');
+  });
+  document.getElementById('sourcePanelOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('sourcePanelOverlay')) {
+      document.getElementById('sourcePanelOverlay').classList.remove('open');
+    }
+  });
+
+  // PWA 설치
+  document.getElementById('btnInstall').addEventListener('click', async () => {
+    if (!State.deferredInstall) return;
+    State.deferredInstall.prompt();
+    const { outcome } = await State.deferredInstall.userChoice;
+    if (outcome === 'accepted') {
+      document.getElementById('installBanner').classList.remove('visible');
+    }
+    State.deferredInstall = null;
+  });
+  document.getElementById('btnInstallClose').addEventListener('click', () => {
+    document.getElementById('installBanner').classList.remove('visible');
+    Store.set('installDismissed', true);
+  });
+}
+
+/* ════════════════════════════════════════════════════════
+   13. 북마크
+   ════════════════════════════════════════════════════════ */
+function toggleBookmark(link) {
+  const saved = State.bookmarks.has(link);
+  if (saved) {
+    State.bookmarks.delete(link);
+    showToast('보관 취소');
+  } else {
+    State.bookmarks.add(link);
+    showToast('📌 보관함에 저장됨');
+  }
+  Store.set('bookmarks', [...State.bookmarks]);
+
+  // 카드 버튼 즉시 업데이트
+  document.querySelectorAll(`.card-bookmark[data-link="${CSS.escape(link)}"]`).forEach(btn => {
+    btn.classList.toggle('saved', !saved);
+    btn.setAttribute('aria-pressed', (!saved).toString());
+    btn.setAttribute('aria-label', !saved ? '보관 취소' : '보관하기');
+    btn.textContent = !saved ? '★' : '☆';
+  });
+}
+
+/* ════════════════════════════════════════════════════════
+   14. 토스트
+   ════════════════════════════════════════════════════════ */
+let toastTimer;
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2000);
+}
+
+/* ════════════════════════════════════════════════════════
+   15. Service Worker 등록
+   ════════════════════════════════════════════════════════ */
+async function registerSW() {
+  if (!('serviceWorker' in navigator)) return;
+  try {
+    const reg = await navigator.serviceWorker.register('./sw.js', { scope: './' });
+    reg.addEventListener('updatefound', () => {
+      const sw = reg.installing;
+      sw.addEventListener('statechange', () => {
+        if (sw.state === 'installed' && navigator.serviceWorker.controller) {
+          showToast('🔄 새 버전이 준비됐어요. 재시작하면 적용돼요.');
+        }
+      });
+    });
+  } catch {}
+}
+
+/* ════════════════════════════════════════════════════════
+   16. PWA 설치 배너
+   ════════════════════════════════════════════════════════ */
+function setupInstallBanner() {
+  const dismissed = Store.get('installDismissed', false);
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true;
+
+  if (dismissed || isStandalone) return;
+
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    State.deferredInstall = e;
+    document.getElementById('installBanner').classList.add('visible');
+  });
+}
+
+/* ════════════════════════════════════════════════════════
+   17. 초기화
+   ════════════════════════════════════════════════════════ */
+async function init() {
+  loadPersistedState();
+  bindEvents();
+  registerSW();
+  setupInstallBanner();
+
+  if (State.articles.length > 0) {
+    // 캐시된 데이터 즉시 표시
+    renderArticles(getFilteredArticles());
+    updateRefreshInfo();
+    document.getElementById('refreshBar').style.display = 'flex';
+  }
+
+  // 피드 로드 (캐시 없으면 즉시, 있으면 30분 후 자동 갱신)
+  loadFeeds();
+
+  // 6시간마다 자동 갱신
+  setInterval(() => {
+    if (State.activeView === 'news' || State.activeView === 'bookmark') {
+      loadFeeds();
+    }
+  }, 6 * 60 * 60 * 1000);
+
+  // 탭 포커스 시 피드 갱신
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && State.lastFetched) {
+      const stale = Date.now() - State.lastFetched.getTime() > 6 * 60 * 60 * 1000;
+      if (stale) loadFeeds();
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
