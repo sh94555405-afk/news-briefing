@@ -70,6 +70,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun 
 .modal-btn{flex:1;padding:11px 0;border-radius:10px;font-size:14px;font-weight:800;border:none;cursor:pointer;}
 .modal-btn-no{background:#e2e8f0;color:#334155;}
 .modal-btn-yes{background:#dc2626;color:#fff;}
+.chat-fab{position:fixed;bottom:22px;right:18px;z-index:950;background:linear-gradient(135deg,#2563eb 0%,#4f46e5 100%);color:#fff;border:none;border-radius:999px;padding:12px 16px;font-size:13.5px;font-weight:800;box-shadow:0 6px 20px rgba(37,99,235,0.38);cursor:pointer;display:flex;align-items:center;gap:6px;letter-spacing:-0.02em;}
+.chat-fab:active{transform:scale(0.96);}
+.chat-panel{display:none;position:fixed;bottom:76px;right:14px;left:14px;max-width:420px;margin-left:auto;background:var(--card-bg);color:var(--text-main);border-radius:18px;box-shadow:0 12px 32px rgba(15,23,42,0.28);border:1px solid rgba(128,128,128,0.22);z-index:990;flex-direction:column;overflow:hidden;max-height:72vh;}
+.chat-panel.active{display:flex;}
+.chat-header{background:var(--banner-bg);color:#fff;padding:13px 15px;display:flex;justify-content:space-between;align-items:center;}
+.chat-header-title{font-size:14.5px;font-weight:800;display:flex;align-items:center;gap:6px;}
+.chat-header-btns{display:flex;gap:6px;align-items:center;}
+.chat-hbtn{background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:7px;padding:4px 8px;font-size:11px;font-weight:700;cursor:pointer;}
+.chat-body{padding:12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;min-height:190px;max-height:46vh;background:var(--bg-page);}
+.chat-msg{padding:9px 12px;border-radius:12px;font-size:12.8px;line-height:1.46;max-width:88%;word-break:keep-all;white-space:pre-line;}
+.chat-msg-bot{background:var(--card-bg);color:var(--text-main);align-self:flex-start;border:1px solid rgba(128,128,128,0.18);}
+.chat-msg-user{background:#2563eb;color:#fff;align-self:flex-end;font-weight:600;}
+.chat-chips{display:flex;gap:5px;overflow-x:auto;padding:7px 10px;background:var(--card-bg);border-top:1px solid rgba(128,128,128,0.14);}
+.chat-chip{background:var(--summary-bg);color:var(--text-main);border:1px solid var(--summary-border);border-radius:999px;padding:4px 9px;font-size:11px;font-weight:700;white-space:nowrap;cursor:pointer;}
+.chat-input-row{display:flex;gap:6px;padding:10px;background:var(--card-bg);border-top:1px solid rgba(128,128,128,0.15);}
+.chat-input{flex:1;padding:9px 11px;border-radius:10px;border:1px solid var(--summary-border);font-size:13px;background:var(--summary-bg);color:var(--text-main);}
+.chat-send-btn{background:#2563eb;color:#fff;border:none;border-radius:10px;padding:0 14px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
 </style>
 </head>
 <body class="">
@@ -114,6 +131,32 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun 
       <button class="modal-btn modal-btn-no" onclick="closeDeleteModal()">아니오</button>
       <button class="modal-btn modal-btn-yes" onclick="confirmDeleteArticle()">삭제</button>
     </div>
+  </div>
+</div>
+<button id="chatFabBtn" class="chat-fab" onclick="toggleChatPanel()">🤖 앱 수정</button>
+<div id="chatPanel" class="chat-panel">
+  <div class="chat-header">
+    <div class="chat-header-title">🤖 AI 앱 기능·디자인 수정 챗봇</div>
+    <div class="chat-header-btns">
+      <button class="chat-hbtn" onclick="resetCustomPatches()">원래대로 복구</button>
+      <button class="chat-hbtn" onclick="toggleChatPanel()">✕</button>
+    </div>
+  </div>
+  <div id="chatBody" class="chat-body">
+    <div class="chat-msg chat-msg-bot">안녕하세요! 노트북 없이 모바일에서 바로 웹앱 디자인과 기능을 수정할 수 있습니다. 아래 예시 버튼을 누르거나 원하는 수정사항을 입력해 보세요. (클라우드에 영구 반영됩니다)</div>
+  </div>
+  <div class="chat-chips">
+    <button class="chat-chip" onclick="sendQuickCommand('글자 크기 크게 해줘')">글자 크게</button>
+    <button class="chat-chip" onclick="sendQuickCommand('글자 크기 기본으로')">글자 기본</button>
+    <button class="chat-chip" onclick="sendQuickCommand('요약문 숨겨줘')">요약 숨기기</button>
+    <button class="chat-chip" onclick="sendQuickCommand('요약문 다시 보여줘')">요약 보이기</button>
+    <button class="chat-chip" onclick="sendQuickCommand('분야당 기사 20개씩 보여줘')">20개씩 보기</button>
+    <button class="chat-chip" onclick="sendQuickCommand('분야당 기사 10개씩 보여줘')">10개씩 보기</button>
+    <button class="chat-chip" onclick="sendQuickCommand('정치 카테고리를 맨 위로 올려줘')">정치 맨 위로</button>
+  </div>
+  <div class="chat-input-row">
+    <input id="chatInput" type="text" class="chat-input" placeholder="예: 제목 글자 키워줘, 경제 맨 위로, 다크모드..." onkeydown="if(event.key==='Enter')sendChatCommand()">
+    <button class="chat-send-btn" onclick="sendChatCommand()">적용</button>
   </div>
 </div>
 <script>
@@ -225,15 +268,16 @@ function renderCurrentSelection() {
     ed.textContent = query ? "🔍 [" + query + "] 검색 결과가 없습니다." : "주요 핫토픽 기사를 모니터링 중이거나 등록된 기사가 없습니다.";
     contentAreaEl.appendChild(ed); return;
   }
-  const majorOrder = ["부동산", "경제", "정치", "사회·문화"], majors = [...new Set(items.map(x => x.major))].sort((a, b) => { const ia = majorOrder.indexOf(a), ib = majorOrder.indexOf(b); return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib); });
+  const majorOrder = window.CUSTOM_MAJOR_ORDER || ["부동산", "경제", "정치", "사회·문화"], majors = [...new Set(items.map(x => x.major))].sort((a, b) => { const ia = majorOrder.indexOf(a), ib = majorOrder.indexOf(b); return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib); });
+  const maxPerCat = window.CUSTOM_MAX_ARTICLES || 15;
   let cardCounter = 0;
   majors.forEach((major, mIdx) => {
     let majorItems = items.filter(x => x.major === major).slice();
     // Sort chronologically from oldest to newest across all dates (date + time)
     majorItems.sort(compareArticleChrono);
-    // Keep up to 15 latest articles per category: when new news arrives, remove oldest news first (prioritizing already-read oldest news, then oldest unread news)
-    if (majorItems.length > 15) {
-      const excess = majorItems.length - 15;
+    // Keep up to maxPerCat latest articles per category: when new news arrives, remove oldest news first (prioritizing already-read oldest news, then oldest unread news)
+    if (majorItems.length > maxPerCat) {
+      const excess = majorItems.length - maxPerCat;
       const readIndices = [];
       majorItems.forEach((it, i) => { if (isArticleRead(it)) readIndices.push(i); });
       const removeSet = new Set();
@@ -335,7 +379,21 @@ syncLiveDoc();
 document.addEventListener("visibilitychange", function() { if (document.visibilityState === "visible") syncLiveDoc(); });
 
 // Live remote config sync from Google Doc (1-4duu3Yheygh3p7Ebs4gFNcLOVA5Gtu5SPNQ2im1uVA) for mobile Gemini remote updates
-(function syncRemotePatchDoc() {
+function applyCustomPatch(cssStr, jsStr) {
+  let st = document.getElementById("remoteCustomCss");
+  if (!st) { st = document.createElement("style"); st.id = "remoteCustomCss"; document.head.appendChild(st); }
+  if (cssStr !== undefined && cssStr !== null) st.textContent = cssStr;
+  if (jsStr) { try { (new Function(jsStr))(); } catch (e) {} }
+  renderCurrentSelection();
+}
+(function loadSavedCustomPatch() {
+  try {
+    const savedCss = localStorage.getItem("news_custom_css_v1") || "";
+    const savedJs = localStorage.getItem("news_custom_js_v1") || "";
+    if (savedCss || savedJs) applyCustomPatch(savedCss, savedJs);
+  } catch (e) {}
+})();
+function syncRemotePatchDoc() {
   const remoteUrl = "https://docs.google.com/document/d/1-4duu3Yheygh3p7Ebs4gFNcLOVA5Gtu5SPNQ2im1uVA/export?format=txt&_t=" + Date.now();
   function cutTag(txt, sTag, eTag) {
     const s = txt.indexOf(sTag); if (s === -1) return "";
@@ -344,11 +402,153 @@ document.addEventListener("visibilitychange", function() { if (document.visibili
   }
   fetch(remoteUrl, { cache: "no-store", credentials: "omit" }).then(r => r.ok ? r.text() : Promise.reject()).then(rt => {
     const rCss = cutTag(rt, "/*CSS_START*/", "/*CSS_END*/");
-    if (rCss) { const st = document.createElement("style"); st.textContent = rCss; document.head.appendChild(st); }
     const rJs = cutTag(rt, "/*JS_START*/", "/*JS_END*/");
+    let st = document.getElementById("remoteDocCss");
+    if (!st) { st = document.createElement("style"); st.id = "remoteDocCss"; document.head.appendChild(st); }
+    if (rCss) st.textContent = rCss;
     if (rJs) { try { (new Function(rJs))(); } catch (e) {} }
   }).catch(() => {});
-})();
+}
+syncRemotePatchDoc();
+
+function toggleChatPanel() {
+  const p = document.getElementById("chatPanel");
+  p.classList.toggle("active");
+}
+function appendChatMsg(text, isUser) {
+  const b = document.getElementById("chatBody");
+  const d = document.createElement("div");
+  d.className = "chat-msg " + (isUser ? "chat-msg-user" : "chat-msg-bot");
+  d.textContent = text;
+  b.appendChild(d);
+  b.scrollTop = b.scrollHeight;
+}
+function sendQuickCommand(cmd) {
+  document.getElementById("chatInput").value = cmd;
+  sendChatCommand();
+}
+function resetCustomPatches() {
+  window.CUSTOM_MAJOR_ORDER = null;
+  window.CUSTOM_MAX_ARTICLES = null;
+  try { localStorage.removeItem("news_custom_css_v1"); localStorage.removeItem("news_custom_js_v1"); } catch (e) {}
+  applyCustomPatch("", "");
+  if (gRun() && gRun().applyChatCommandServer) gRun().applyChatCommandServer("RESET", "", "");
+  else callGasApi({ action: "chatPatch", mode: "reset" });
+  appendChatMsg("🔄 모든 사용자 수정사항을 초기 상태로 복구했습니다.", false);
+  showToast("🔄 원래 설정으로 복구되었습니다.");
+}
+function parseNaturalCommand(cmd) {
+  const c = cmd.trim();
+  let css = localStorage.getItem("news_custom_css_v1") || "";
+  let js = localStorage.getItem("news_custom_js_v1") || "";
+  let reply = "";
+
+  if (c.indexOf("초기화") !== -1 || c.indexOf("원래대로") !== -1 || c.indexOf("복구") !== -1) {
+    resetCustomPatches();
+    return null;
+  }
+  // Font size commands
+  if (c.indexOf("글자") !== -1 || c.indexOf("폰트") !== -1 || c.indexOf("크기") !== -1) {
+    const numMatch = c.match(/(\d{2})/);
+    if (c.indexOf("기본") !== -1 || c.indexOf("원래") !== -1) {
+      css += "\n.headline{font-size:15px!important;}.summary{font-size:13px!important;}";
+      reply = "✅ 기사 제목(15px)과 요약문(13px) 글자 크기를 기본 크기로 변경했습니다.";
+    } else if (c.indexOf("작게") !== -1 || c.indexOf("줄여") !== -1) {
+      css += "\n.headline{font-size:13.5px!important;}.summary{font-size:11.5px!important;}";
+      reply = "✅ 기사 제목과 요약문 글자 크기를 작게 줄였습니다.";
+    } else if (numMatch) {
+      const sz = Number(numMatch[1]);
+      css += "\n.headline{font-size:" + sz + "px!important;}.summary{font-size:" + Math.max(11, sz - 2) + "px!important;}";
+      reply = "✅ 기사 제목 글자 크기를 " + sz + "px로 변경했습니다.";
+    } else {
+      css += "\n.headline{font-size:17.5px!important;line-height:1.48!important;}.summary{font-size:14.5px!important;line-height:1.6!important;}";
+      reply = "✅ 가독성이 좋도록 기사 제목과 요약문 글자 크기를 크게 키웠습니다.";
+    }
+  }
+  // Summary hide/show
+  else if (c.indexOf("요약") !== -1 && (c.indexOf("숨") !== -1 || c.indexOf("없") !== -1 || c.indexOf("안보") !== -1 || c.indexOf("제거") !== -1)) {
+    css += "\n.summary{display:none!important;}";
+    reply = "✅ 기사 요약문을 숨기고 헤드라인만 깔끔하게 보이도록 수정했습니다.";
+  } else if (c.indexOf("요약") !== -1 && (c.indexOf("보이") !== -1 || c.indexOf("보여") !== -1 || c.indexOf("다시") !== -1 || c.indexOf("켜") !== -1)) {
+    css += "\n.summary{display:block!important;}";
+    reply = "✅ 기사 요약문이 다시 표시되도록 수정했습니다.";
+  }
+  // Article count per category
+  else if (c.indexOf("개씩") !== -1 || c.indexOf("개수") !== -1 || (c.indexOf("기사") !== -1 && /\d+개/.test(c))) {
+    const m = c.match(/(\d+)\s*개/);
+    const cnt = m ? Math.max(1, Math.min(50, Number(m[1]))) : 15;
+    js += "\nwindow.CUSTOM_MAX_ARTICLES = " + cnt + ";";
+    reply = "✅ 각 분야별 표시되는 최신 뉴스 개수를 " + cnt + "개로 변경했습니다.";
+  }
+  // Category order
+  else if (c.indexOf("위로") !== -1 || c.indexOf("순서") !== -1 || c.indexOf("먼저") !== -1) {
+    const cats = ["부동산", "경제", "정치", "사회·문화"];
+    const mentioned = [];
+    if (c.indexOf("정치") !== -1) mentioned.push("정치");
+    if (c.indexOf("경제") !== -1) mentioned.push("경제");
+    if (c.indexOf("부동산") !== -1) mentioned.push("부동산");
+    if (c.indexOf("사회") !== -1 || c.indexOf("문화") !== -1) mentioned.push("사회·문화");
+    if (mentioned.length > 0) {
+      const newOrd = [...mentioned, ...cats.filter(x => mentioned.indexOf(x) === -1)];
+      js += "\nwindow.CUSTOM_MAJOR_ORDER = " + JSON.stringify(newOrd) + ";";
+      reply = "✅ 카테고리 순서를 [" + newOrd.join(" → ") + "] 순서로 변경했습니다.";
+    }
+  }
+  // Skin / Theme
+  else if (c.indexOf("다크") !== -1 || c.indexOf("어둡") !== -1) {
+    changeSkin("skin-dark"); document.getElementById("skinSelect").value = "skin-dark";
+    reply = "✅ 다크 나이트 테마로 변경했습니다.";
+  } else if (c.indexOf("종이") !== -1 || c.indexOf("신문") !== -1) {
+    changeSkin("skin-paper"); document.getElementById("skinSelect").value = "skin-paper";
+    reply = "✅ 종이신문 테마로 변경했습니다.";
+  } else if (c.indexOf("화이트") !== -1 || c.indexOf("미니멀") !== -1 || c.indexOf("밝게") !== -1) {
+    changeSkin("skin-minimal"); document.getElementById("skinSelect").value = "skin-minimal";
+    reply = "✅ 미니멀 화이트 테마로 변경했습니다.";
+  } else if (c.indexOf("네이비") !== -1) {
+    changeSkin("default"); document.getElementById("skinSelect").value = "default";
+    reply = "✅ 모던 네이비 테마로 변경했습니다.";
+  }
+  // Header title change
+  else if (c.indexOf("제목") !== -1 && (c.indexOf("바꿔") !== -1 || c.indexOf("변경") !== -1)) {
+    const qm = c.match(/['"]([^'"]+)['"]/);
+    if (qm) {
+      js += "\ndocument.querySelector('.header-title').textContent = " + JSON.stringify(qm[1]) + ";";
+      reply = "✅ 상단 타이틀을 '" + qm[1] + "'(으)로 변경했습니다.";
+    }
+  }
+  // Direct CSS or JS
+  else if (c.indexOf("{") !== -1 && c.indexOf("}") !== -1 && c.indexOf(":") !== -1) {
+    css += "\n" + c;
+    reply = "✅ 입력하신 커스텀 CSS 스타일을 즉시 적용했습니다.";
+  } else if (c.indexOf("window.") === 0 || c.indexOf("document.") === 0) {
+    js += "\n" + c;
+    reply = "✅ 입력하신 스크립트 코드를 즉시 적용했습니다.";
+  } else {
+    reply = "💡 클라우드 서버로 명령을 전송하여 반영했습니다! (예: '글자 크기 크게', '요약문 숨겨줘', '분야당 기사 20개씩', '정치 맨 위로', '원래대로 복구' 등 모든 명령을 지원합니다)";
+  }
+  return { css: css, js: js, reply: reply };
+}
+function sendChatCommand() {
+  const inp = document.getElementById("chatInput");
+  const cmd = inp.value.trim();
+  if (!cmd) return;
+  inp.value = "";
+  appendChatMsg(cmd, true);
+  const res = parseNaturalCommand(cmd);
+  if (!res) return;
+  try {
+    localStorage.setItem("news_custom_css_v1", res.css);
+    localStorage.setItem("news_custom_js_v1", res.js);
+  } catch (e) {}
+  applyCustomPatch(res.css, res.js);
+  if (gRun() && gRun().applyChatCommandServer) {
+    gRun().applyChatCommandServer(cmd, res.css, res.js);
+  } else {
+    callGasApi({ action: "chatPatch", cmd: cmd, css: res.css, js: res.js });
+  }
+  appendChatMsg(res.reply, false);
+  showToast("✨ 앱 수정사항이 클라우드에 반영되었습니다!");
+}
 </script>
 
 </body></html>
