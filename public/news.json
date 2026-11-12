@@ -1,8 +1,298 @@
 {
-  "updatedAt": "2026-11-12T12:58:06.004Z",
-  "updatedAtKST": "2026-11-12 21:58 KST",
+  "updatedAt": "2026-11-12T18:46:54.537Z",
+  "updatedAtKST": "2026-11-13 03:46 KST",
   "count": 100,
   "articles": [
+    {
+      "title": "\"요즘 부동산 썰렁\" 서울·경기 매물 쌓이는데...'이 동네' 신고가 - 머니투데이 - 머니투데이",
+      "desc": "\"요즘 부동산 썰렁\" 서울·경기 매물 쌓이는데...'이 동네' 신고가 - 머니투데이 머니투데이",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE94MzQ3a0hvUTJ2TVYtNVA2LVUzbVFsajF1OGNVOTRiMjZwOUs2Y0t0Z3FBZzlsZU94MzNOdGVjemtBaUJEbVFvcXI3NmxnbmhFMGdNMEkybUFxbVJsWnBOeS1uLUJaeS1XVnfSAW9BVV95cUxPUkZQdV9iTGFOZEpkeEF4WkZtOUp0TjNFekdCSnZQMmdnaXg5eVYxdzc2UXJWb3laZ2lSbjljZ1NoU2k4OXlocU11M2p2N3hvNWVNVHdvVk44MDVMMmVpVUM2X1dua2N3RE5ZVlFvcFU?oc=5",
+      "pubDate": "2026-11-12T17:30:06.000Z",
+      "source": "Google 부동산",
+      "cat": "부동산",
+      "summary": "\"요즘 부동산 썰렁\" 서울·경기 매물 쌓이는데...'이 동네' 신고가 - 머니투데이 머니투데이",
+      "importance": 5
+    },
+    {
+      "title": "어제의 사건·사고 브리핑｜2026년 11월 12일 - 데일리25",
+      "desc": "어제의 사건·사고 브리핑｜2026년 11월 12일 데일리25",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5FbE9NVGVCOVNGSWtnbmk1QVU4TW9nUl83Z2FydnZtOFZaenh2X094ZE55WWd6MDV6ekVNUS1PbW00UGdnZG1kSFBiUmkxM0lIRGkwTjVHeXFJbjB6TEtaT0N3MVRqejFQTUZlcw?oc=5",
+      "pubDate": "2026-11-12T17:07:59.000Z",
+      "source": "Google 사회",
+      "cat": "사회",
+      "summary": "어제의 사건·사고 브리핑｜2026년 11월 12일 데일리25",
+      "importance": 5
+    },
+    {
+      "title": "젠슨 황 퇴진, AI 선장을 잃다…엔비디아 33년 만에 리더십 교체",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/2026111339411",
+      "pubDate": "2026-11-12T15:52:41.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "\"엔비디아 성장 이어갈 수 있나\"…월가, 줄줄이 목표가 낮춰",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/2026111339431",
+      "pubDate": "2026-11-12T15:45:47.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "젠슨 황, 엔비디아 전격 사임…美 반도체 규제 강화하나 [박신영의 개장전 요것만]",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/202611133936i",
+      "pubDate": "2026-11-12T15:23:40.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "“통역 없어도” 안경 쓰니 일본인과 한국어로 대화 술술",
+      "desc": "삼성전자·구글·젠틀몬터 스마트안경 출시 내달 10일부터 판매, 가격 65만~70만원“가장 좋아하는 일본 요리가 무엇인가요” “라멘입니다. 추천해줄 다른 음식이 있나요” “스시도 유..",
+      "link": "https://www.mk.co.kr/news/economy/12207244",
+      "pubDate": "2026-11-12T15:11:18.000Z",
+      "source": "매일경제",
+      "cat": "경제",
+      "summary": "삼성전자·구글·젠틀몬터 스마트안경 출시 내달 10일부터 판매, 가격 65만~70만원“가장 좋아하는 일본 요리가 무엇인가요” “라멘입니다. 추천해",
+      "importance": 5
+    },
+    {
+      "title": "[오늘의 운세] 11월 13일 띠별 운세",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/2026110289387",
+      "pubDate": "2026-11-12T15:00:10.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "[오늘의 운세] 2026년 11월 13일 별자리 운세",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/2026110288957",
+      "pubDate": "2026-11-12T15:00:08.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "[오늘의 운세] 오늘 뭐 먹지?…11월 13일 띠별 추천 점심메뉴",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/2026110288807",
+      "pubDate": "2026-11-12T15:00:05.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "[오늘의 운세] 2026년 11월 13일 오행별 행운의 컬러",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/2026110289627",
+      "pubDate": "2026-11-12T15:00:03.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "K메모리, 납품처 확대 기회 … AI투자 둔화땐 수요위축 우려",
+      "desc": "젠슨 황 엔비디아 최고경영자(CEO)가 사임하면서 인공지능(AI) 패권을 둘러싼 국가, 기업 간 구도에 어떤 변화가 생길지에 관심이 쏠린다. 반도체 업계에서는 황 CEO가 물러난 ..",
+      "link": "https://www.mk.co.kr/news/business/12207213",
+      "pubDate": "2026-11-12T14:50:30.000Z",
+      "source": "매일경제",
+      "cat": "경제",
+      "summary": "젠슨 황 엔비디아 최고경영자(CEO)가 사임하면서 인공지능(AI) 패권을 둘러싼 국가, 기업 간 구도에 어떤 변화가 생길지에 관심이 쏠린다. 반",
+      "importance": 5
+    },
+    {
+      "title": "[속보] 엔비디아, 젠슨황 사임에 뉴욕증시서 13% 급락 출발",
+      "desc": "엔비디아 급락 출발…1년4개월來 최저 뉴욕증시 혼조세…국제유가는 하락해엔비디아 CEO 스캔들 의혹이 일파만파 커지자 젠슨 황이 사임했다. 엔비디아의 주가는 장초반 13% 가량 급락..",
+      "link": "https://www.mk.co.kr/news/stock/12207212",
+      "pubDate": "2026-11-12T14:49:37.000Z",
+      "source": "매일경제",
+      "cat": "경제",
+      "summary": "엔비디아 급락 출발…1년4개월來 최저 뉴욕증시 혼조세…국제유가는 하락해엔비디아 CEO 스캔들 의혹이 일파만파 커지자 젠슨 황이 사임했다. 엔비디",
+      "importance": 5
+    },
+    {
+      "title": "월가, AMD '매수' 의견…엔비디아 일부 대체 기대[월가 업&다운]",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/202611123926i",
+      "pubDate": "2026-11-12T14:48:19.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "젠슨 황 없는 엔비디아···삼성·SK 'AI 동맹' 새 국면 - 포인트데일리",
+      "desc": "젠슨 황 없는 엔비디아···삼성·SK 'AI 동맹' 새 국면 포인트데일리",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9GUncwQzJSdGhjTWR5ZGNxSVM1TDFDWEY4QVFnNlNsSTA4SUZOUXZFR3JURzdwaEppRkc5bXRfMnZOU25GWTMyUEIwMnZTcTFTdFViS193bGN3YVFxOEtEa1ZxaHZlbEdRQ3NoRmdUS1HSAXRBVV95cUxNbkhfWG92NFhfM3VXX1p3WmExTDNubGNuVDJOYVkwLTY5anlrMDlhTlVZbkdKNDVKWWMzcHNXQzBkMVlOaGhNMUx0MTRmNmo2UmZRVHRUYlY1b2taTFV0WWtsbHUwbm0xaHpYNmxKTlRaaXREeA?oc=5",
+      "pubDate": "2026-11-12T14:40:07.000Z",
+      "source": "Google IT",
+      "cat": "IT",
+      "summary": "젠슨 황 없는 엔비디아···삼성·SK 'AI 동맹' 새 국면 포인트데일리",
+      "importance": 5
+    },
+    {
+      "title": "[속보] 엔비디아, 젠슨 황 사임에 뉴욕증시서 13% 급락 출발",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/2026111239037",
+      "pubDate": "2026-11-12T14:39:43.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "젠슨 황 엔비디아 CEO 퇴진...엔비디아 주가 '급락'",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/202611123920i",
+      "pubDate": "2026-11-12T14:38:29.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "특례시 시장들 “규모에 걸맞는 실질적 권한 부여해야” 한목소리",
+      "desc": "‘특례시시장협의회’ 정기회의 법적권한·재정 확대 등 논의대한민국특례시시장협의회는 12일 용인시 처인구 포곡읍 에버랜드 판다월드 교육장에서 ‘2026년 제2회 정기회의’를 열고 특례..",
+      "link": "https://www.mk.co.kr/news/economy/12207183",
+      "pubDate": "2026-11-12T14:26:18.000Z",
+      "source": "매일경제",
+      "cat": "경제",
+      "summary": "‘특례시시장협의회’ 정기회의 법적권한·재정 확대 등 논의대한민국특례시시장협의회는 12일 용인시 처인구 포곡읍 에버랜드 판다월드 교육장에서 ‘20",
+      "importance": 5
+    },
+    {
+      "title": "젠슨 황 퇴진 확정…월가 목표주가 줄줄이 하향 [월가 업&다운]",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/202611123918i",
+      "pubDate": "2026-11-12T14:23:24.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "\"젠슨 황 스캔들에 등장한 여성\"…싱가포르서 입국 금지된 이유",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/2026111239107",
+      "pubDate": "2026-11-12T14:19:06.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "이것 쓰고 제미나이와 대화, 갤럭시 연동까지…뉴욕서 공개된 'AI 안경' [영상]",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/202611123912g",
+      "pubDate": "2026-11-12T14:12:00.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "삼성, AI글라스 출격…\"실시간 통역·관광 가이드 가능\"",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/2026111238961",
+      "pubDate": "2026-11-12T14:00:04.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "\"65만원이라 비싸다 했는데\"…삼성 'AI 안경' 써보고 '화들짝' [체험기]",
+      "desc": "",
+      "link": "https://www.hankyung.com/article/202611122173i",
+      "pubDate": "2026-11-12T14:00:01.000Z",
+      "source": "한국경제",
+      "cat": "경제",
+      "summary": "",
+      "importance": 5
+    },
+    {
+      "title": "“말 걸면 통역하고 길 안내까지”…삼성 ‘AI 탑재’ 스마트안경 출시",
+      "desc": "구글 AI 제미나이 탑재 내달 10일 韓 정식출시삼성전자가 구글의 인공지능(AI) ‘제미나이’를 탑재한 스마트 안경을 선보였다. 눈앞에 보이는 사물을 설명하고 외국어 메뉴판을 번역..",
+      "link": "https://www.mk.co.kr/news/business/12206741",
+      "pubDate": "2026-11-12T14:00:00.000Z",
+      "source": "매일경제",
+      "cat": "경제",
+      "summary": "구글 AI 제미나이 탑재 내달 10일 韓 정식출시삼성전자가 구글의 인공지능(AI) ‘제미나이’를 탑재한 스마트 안경을 선보였다. 눈앞에 보이는 ",
+      "importance": 5
+    },
+    {
+      "title": "주식 손실 나도 못 파는 개인투자자…3명 중 2명 ‘보유·물타기’",
+      "desc": "국내 개인투자자 3명 중 2명은 손실이 난 종목을 계속 보유하거나 추가 매수에 나서고 있다는 보고서가 나왔다. 토스 금융경영연구소 토스인사이트가 12일 발간한 ‘국내 개인 투자자들..",
+      "link": "https://www.mk.co.kr/news/stock/12207149",
+      "pubDate": "2026-11-12T13:59:07.000Z",
+      "source": "매일경제",
+      "cat": "경제",
+      "summary": "국내 개인투자자 3명 중 2명은 손실이 난 종목을 계속 보유하거나 추가 매수에 나서고 있다는 보고서가 나왔다. 토스 금융경영연구소 토스인사이트가",
+      "importance": 5
+    },
+    {
+      "title": "[속보] 젠슨 황, 엔비디아 CEO 전격 사임…‘검은 재킷’의 마법 깨졌다",
+      "desc": "임시 CEO에 콜레트 크레스 CFO엔비디아 창업자인 젠슨 황 최고경영자(CEO)가 전격 사임했다. 엔비디아는 현지시간 12일 이사회를 통해 황 CEO가 최고경영자와 사장, 이사회 ..",
+      "link": "https://www.mk.co.kr/news/world/12207148",
+      "pubDate": "2026-11-12T13:58:26.000Z",
+      "source": "매일경제",
+      "cat": "경제",
+      "summary": "임시 CEO에 콜레트 크레스 CFO엔비디아 창업자인 젠슨 황 최고경영자(CEO)가 전격 사임했다. 엔비디아는 현지시간 12일 이사회를 통해 황 ",
+      "importance": 5
+    },
+    {
+      "title": "수자원공사 사장에 양승조 전 충남지사",
+      "desc": "한국수자원공사 신임 사장에 양승조 전 충남도지사(67·사진)가 임명됐다. 12일 수자원공사에 따르면 양 신임 사장은 13일 대전 본사에서 취임식을 열고 업무를 시작한다. 충남 천안..",
+      "link": "https://www.mk.co.kr/news/business/12207139",
+      "pubDate": "2026-11-12T13:51:59.000Z",
+      "source": "매일경제",
+      "cat": "경제",
+      "summary": "한국수자원공사 신임 사장에 양승조 전 충남도지사(67·사진)가 임명됐다. 12일 수자원공사에 따르면 양 신임 사장은 13일 대전 본사에서 취임식",
+      "importance": 5
+    },
+    {
+      "title": "트럼프 “멕시코, 불법 이민 막아라”…불응 땐 관세 두 배 경고",
+      "desc": "도널드 트럼프 미국 대통령이 중남미에서 대규모 불법 이민 행렬이 다시 재개됐다고 주장하며 멕시코에 이민자 차단을 요구했다. 멕시코가 이를 막지 않을 경우 관세를 즉각 두 배로 올리..",
+      "link": "https://www.mk.co.kr/news/world/12207134",
+      "pubDate": "2026-11-12T13:48:44.000Z",
+      "source": "매일경제",
+      "cat": "경제",
+      "summary": "도널드 트럼프 미국 대통령이 중남미에서 대규모 불법 이민 행렬이 다시 재개됐다고 주장하며 멕시코에 이민자 차단을 요구했다. 멕시코가 이를 막지 ",
+      "importance": 5
+    },
+    {
+      "title": "고작 23원이 어떻게 9억원으로 됐지?…판사까지 속인 남성의 최후",
+      "desc": "인공지능(AI)을 이용해 각종 서류를 위조하고 사기 행각을 벌인 20대 남성이 징역 7년을 선고받았다. 실제 잔액이 23원에 불과한 계좌에 9억원이 있는 것처럼 잔액증명서를 조작해..",
+      "link": "https://www.mk.co.kr/news/society/12207114",
+      "pubDate": "2026-11-12T13:36:34.000Z",
+      "source": "매일경제",
+      "cat": "경제",
+      "summary": "인공지능(AI)을 이용해 각종 서류를 위조하고 사기 행각을 벌인 20대 남성이 징역 7년을 선고받았다. 실제 잔액이 23원에 불과한 계좌에 9억",
+      "importance": 5
+    },
+    {
+      "title": "천안서 발달장애 10대 숨져…학대 정황에 어머니 긴급체포",
+      "desc": "충남 천안에서 중증 발달장애가 있는 10대 아들을 숨지게 한 혐의로 어머니가 긴급 체포됐다. 12일 충남경찰청과 소방당국에 따르면, 이날 오전 8시 27분쯤 천안시 서북구 두정동의..",
+      "link": "https://www.mk.co.kr/news/society/12207094",
+      "pubDate": "2026-11-12T13:28:06.000Z",
+      "source": "매일경제",
+      "cat": "경제",
+      "summary": "충남 천안에서 중증 발달장애가 있는 10대 아들을 숨지게 한 혐의로 어머니가 긴급 체포됐다. 12일 충남경찰청과 소방당국에 따르면, 이날 오전 ",
+      "importance": 5
+    },
     {
       "title": "“도주 우려”…인천 송도 영어유치원 입구에 불 지른 60대 구속",
       "desc": "이른바 ‘영어 유치원’으로 불리는 유아 대상 영어학원 앞에 불을 지른 60대 남성이 구속됐다. 인천 연수경찰서는 12일 현주건조물방화 혐의로 60대 A씨를 구속했다. 박영기 인천지..",
@@ -44,16 +334,6 @@
       "importance": 5
     },
     {
-      "title": "\"내 사생활 털렸네\"…거실 홈캠 10종 모두 '위험'",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111238577",
-      "pubDate": "2026-11-12T12:32:25.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
       "title": "“장난이었다” vs “돈 못 받아”…김승우 2200만원 절도 피소, 엇갈린 주장",
       "desc": "5년 전 유흥주점 술자리서 시작된 갈등…고소인 “지갑에서 현금 가져가” 김승우 측 “다음 날 계좌이체로 반환…허위 주장 강경 대응”배우 김승우가 2200만원 절도 혐의로 고소당한 ..",
       "link": "https://www.mk.co.kr/news/society/12207002",
@@ -61,96 +341,6 @@
       "source": "매일경제",
       "cat": "경제",
       "summary": "5년 전 유흥주점 술자리서 시작된 갈등…고소인 “지갑에서 현금 가져가” 김승우 측 “다음 날 계좌이체로 반환…허위 주장 강경 대응”배우 김승우가",
-      "importance": 5
-    },
-    {
-      "title": "英 수감자 650명 조기 석방 이유가…\"교도소 자리 없어서\"",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111238677",
-      "pubDate": "2026-11-12T12:30:06.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "KF21 양산·개량·수출 선순환…KAI, 해외진출 날개로 연매출 5조 시대 연다 [MK 기업 리포트]",
-      "desc": "3분기 매출 51.6% 늘어 1조643억 수주잔고 26조…연매출 5년 치 T-50·수리온 개량해 수출 확대 2040년 세계 ‘빅4’ 항공사 목표지난 9월 말 경남 사천공항. 공군 ..",
-      "link": "https://www.mk.co.kr/news/business/12206957",
-      "pubDate": "2026-11-12T12:11:54.000Z",
-      "source": "매일경제",
-      "cat": "경제",
-      "summary": "3분기 매출 51.6% 늘어 1조643억 수주잔고 26조…연매출 5년 치 T-50·수리온 개량해 수출 확대 2040년 세계 ‘빅4’ 항공사 목표",
-      "importance": 5
-    },
-    {
-      "title": "中 때린 공화당 의원의 한마디…삼전닉스 조용히 웃는 까닭",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111238457",
-      "pubDate": "2026-11-12T12:10:34.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "프랑스 기차역 폭파 위협…런던 오가는 유로스타 멈췄다",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111238177",
-      "pubDate": "2026-11-12T12:09:14.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "\"한국이 해외보다 싸게 판다고?\"…와인 애호가들 몰리는 곳 [씬메이커]",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/202611110530g",
-      "pubDate": "2026-11-12T12:00:02.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "“물려있는데 뭘 할 수 있죠?”...코스피 거래대금, 6개월새 60% 증발",
-      "desc": "하향 박스권에 갇혀 활력 잃어 5월 65조에 달했던 하루 거래 이달 들어 20조원대로 떨어져 주식 회전율도 16년만에 최저국내 증시가 코스피 6000선 아래에서 ‘하향된 박스권’ ..",
-      "link": "https://www.mk.co.kr/news/stock/12206924",
-      "pubDate": "2026-11-12T11:57:34.000Z",
-      "source": "매일경제",
-      "cat": "경제",
-      "summary": "하향 박스권에 갇혀 활력 잃어 5월 65조에 달했던 하루 거래 이달 들어 20조원대로 떨어져 주식 회전율도 16년만에 최저국내 증시가 코스피 6",
-      "importance": 5
-    },
-    {
-      "title": "김민석, '李대통령이 尹 탄핵반대' 주장한 최민희 감찰조사 지시",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/202611123836i",
-      "pubDate": "2026-11-12T11:55:43.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "천안서 발달장애 10대 사망…학대 정황 발견, 母 긴급체포",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111238447",
-      "pubDate": "2026-11-12T11:53:44.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "“퇴직 후 받은 성과급도 퇴직금에 포함”…기간제 교사 손 들어준 법원",
-      "desc": "기간제 교사의 퇴직금을 산정할 때 성과상여금을 반영해야 한다는 법원의 판단이 나왔다. 통상 기간제 교사는 계약 기간이 끝난 뒤 성과상여금이 지급되기 때문에 퇴직금을 계산할 때는 제..",
-      "link": "https://www.mk.co.kr/news/society/12206917",
-      "pubDate": "2026-11-12T11:50:57.000Z",
-      "source": "매일경제",
-      "cat": "경제",
-      "summary": "기간제 교사의 퇴직금을 산정할 때 성과상여금을 반영해야 한다는 법원의 판단이 나왔다. 통상 기간제 교사는 계약 기간이 끝난 뒤 성과상여금이 지급",
       "importance": 5
     },
     {
@@ -164,156 +354,6 @@
       "importance": 5
     },
     {
-      "title": "[속보] 김민석, 與 윤감단에 최민희 감찰 지시…\"최근 언행 심각하게 인식\"",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111238407",
-      "pubDate": "2026-11-12T11:39:05.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "[단독] 美경제석학 로고프 “ AI거품 극적으로 붕괴할것…그래도 한국은 승자”",
-      "desc": "케네스 로고프 하버드대 국제경제학 석좌교수 인터뷰 부유세 도입만으론 효과 적어 韓 경제 불평등 해소하려면 중산층 더 두텁게 만들어야 AI 거품은 언젠가는 꺼질 것 나랏빚 너무 늘리..",
-      "link": "https://www.mk.co.kr/news/economy/12206895",
-      "pubDate": "2026-11-12T11:38:26.000Z",
-      "source": "매일경제",
-      "cat": "경제",
-      "summary": "케네스 로고프 하버드대 국제경제학 석좌교수 인터뷰 부유세 도입만으론 효과 적어 韓 경제 불평등 해소하려면 중산층 더 두텁게 만들어야 AI 거품은",
-      "importance": 5
-    },
-    {
-      "title": "안경 벗은 이재용 모습에 '깜짝'…\"돌아가신 이건희 회장인 줄\" [영상]",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111238247",
-      "pubDate": "2026-11-12T11:30:05.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "젠슨 황 불륜 상대 ‘중국 간첩설’에…中 “기술 봉쇄 구실 찾지 말라”",
-      "desc": "중국 정부가 젠슨 황 엔비디아 최고경영자(CEO)의 불륜 상대를 둘러싼 ‘중국 간첩설’과 관련해 미국에 대중국 기술 봉쇄 시도를 중단하라고 촉구했다. 마오닝 중국 외교부 대변인은 ..",
-      "link": "https://www.mk.co.kr/news/world/12206859",
-      "pubDate": "2026-11-12T11:22:38.000Z",
-      "source": "매일경제",
-      "cat": "경제",
-      "summary": "중국 정부가 젠슨 황 엔비디아 최고경영자(CEO)의 불륜 상대를 둘러싼 ‘중국 간첩설’과 관련해 미국에 대중국 기술 봉쇄 시도를 중단하라고 촉구",
-      "importance": 5
-    },
-    {
-      "title": "청와대 \"李대통령, 尹 탄핵 반대했다는 최민희 발언 사실무근\"",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111238167",
-      "pubDate": "2026-11-12T11:12:43.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "\"AI 거품 한순간에 터질 수도\"…월가 긴장시킨 '최악의 시나리오'",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111238017",
-      "pubDate": "2026-11-12T11:04:55.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "여당, 종부세 유지 가닥…전월세 등 부동산 민심 악화에 고심 - 한겨레",
-      "desc": "여당, 종부세 유지 가닥…전월세 등 부동산 민심 악화에 고심 한겨레김민석·\"부동산 정책 일관\" 종부세 엇박자 불식 주력, 정청래 갈등엔 \"만나서 대화\" 국제신문김민석 “부동산 기조, 일관돼야”…종부세 ‘정부안 유지’에 무게 경향신문",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9hUnlCS0tWSTBIQ1FXcW83T21NOVZaemlsMFlxUTlkLTdRWm9uV0NwbmpxUWZiMnJSY2ZFWXdKakZkVzBVNGZSVW44RFMwU0FTOS1sUU1KYlhmWWNTSmw3ZHpMcExNeW1STmVXWE1WTENnc1FW?oc=5",
-      "pubDate": "2026-11-12T11:01:00.000Z",
-      "source": "Google 부동산",
-      "cat": "부동산",
-      "summary": "여당, 종부세 유지 가닥…전월세 등 부동산 민심 악화에 고심 한겨레김민석·\"부동산 정책 일관\" 종부세 엇박자 불식 주력, 정청래 갈등엔 \"만나서",
-      "importance": 5
-    },
-    {
-      "title": "여직원 노린 우체국 화장실 몰카…범인은 우체국 사무장이었다",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111238087",
-      "pubDate": "2026-11-12T11:00:49.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "\"작년엔 없어서 못 팔았는데\"…명동 약사들 한숨 쉬는 이유",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/202611110221g",
-      "pubDate": "2026-11-12T11:00:01.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "코에 떨어진 새똥의 기적…즉석복권 5억 터진 사연",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111237827",
-      "pubDate": "2026-11-12T10:54:24.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "“중고거래로 이자 갚던 판교 영끌 부부”…4년 전 13억 아파트, 지금은 25억",
-      "desc": "2022년 금리 급등기에 대출 이자를 감당하기 위해 중고 물품까지 내다 팔았던 이른바 ‘판교 영끌 부부’의 사연이 4년 만에 다시 주목받고 있다. 당시 13억원에 매입한 것으로 알..",
-      "link": "https://www.mk.co.kr/news/society/12206792",
-      "pubDate": "2026-11-12T10:52:31.000Z",
-      "source": "매일경제",
-      "cat": "경제",
-      "summary": "2022년 금리 급등기에 대출 이자를 감당하기 위해 중고 물품까지 내다 팔았던 이른바 ‘판교 영끌 부부’의 사연이 4년 만에 다시 주목받고 있다",
-      "importance": 5
-    },
-    {
-      "title": "공소청 출범 한달 간 검사 125명 떠났다…인력난 심화",
-      "desc": "공소청 출범 후 한 달 간 사직한 검사가 120명이 넘는 것으로 집계됐다. 12일 법무부에 따르면, 공소청이 출범한 지난 10월 2일부터 지난 1일까지 검사 퇴직자는 125명으로 ..",
-      "link": "https://www.mk.co.kr/news/society/12206790",
-      "pubDate": "2026-11-12T10:42:07.000Z",
-      "source": "매일경제",
-      "cat": "경제",
-      "summary": "공소청 출범 후 한 달 간 사직한 검사가 120명이 넘는 것으로 집계됐다. 12일 법무부에 따르면, 공소청이 출범한 지난 10월 2일부터 지난 ",
-      "importance": 5
-    },
-    {
-      "title": "국토장관 \"재초환, 재산권 침해 여지\"",
-      "desc": "홍지선 국토교통부 장관(사진)이 재건축초과이익환수제를 놓고 주택 가격 안정 효과와 개인의 재산권 침해 문제를 종합적으로 검토할 필요가 있다고 밝혔다. 홍 장관은 12일 국회 국토교..",
-      "link": "https://www.mk.co.kr/news/economy/12206789",
-      "pubDate": "2026-11-12T10:41:32.000Z",
-      "source": "매일경제",
-      "cat": "경제",
-      "summary": "홍지선 국토교통부 장관(사진)이 재건축초과이익환수제를 놓고 주택 가격 안정 효과와 개인의 재산권 침해 문제를 종합적으로 검토할 필요가 있다고 밝",
-      "importance": 5
-    },
-    {
-      "title": "공소청 출범 뒤 한 달 만에 사직서 낸 검사 '100명' 넘어",
-      "desc": "",
-      "link": "https://www.hankyung.com/article/2026111237877",
-      "pubDate": "2026-11-12T10:39:20.000Z",
-      "source": "한국경제",
-      "cat": "경제",
-      "summary": "",
-      "importance": 5
-    },
-    {
-      "title": "\"지방재정 자율성 높여 기업유치\"",
-      "desc": "이재명 대통령이 지방자치단체의 재정 운용에 자율성과 유연성을 부여해 지방재정을 확충할 수 있도록 하라고 12일 주문했다. 이 대통령은 이날 청와대에서 주재한 수석보좌관회의에서 '지..",
-      "link": "https://www.mk.co.kr/news/economy/12206787",
-      "pubDate": "2026-11-12T10:36:12.000Z",
-      "source": "매일경제",
-      "cat": "경제",
-      "summary": "이재명 대통령이 지방자치단체의 재정 운용에 자율성과 유연성을 부여해 지방재정을 확충할 수 있도록 하라고 12일 주문했다. 이 대통령은 이날 청와",
-      "importance": 5
-    },
-    {
       "title": "경찰청, '2026 국제 마약수사 컨퍼런스' 개최 - 서울포커스",
       "desc": "경찰청, '2026 국제 마약수사 컨퍼런스' 개최 서울포커스",
       "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1HOTNiS0drOXI4MlJvaU0wV3h5aVptZm04SWV6NXlpbXFIalZ1Sk9FR2xaNkhvMWhMdHo3Q212bjFJcXFVTGhLSFJoYW15dUFnWldIWllkMWdvNTMyLUZoM1pHc2RaN2ZnazRCZg?oc=5",
@@ -324,23 +364,13 @@
       "importance": 5
     },
     {
-      "title": "‘홍준표 대선캠프’ 관계자 6명 기소…洪 “검사들 사직하고 변호사나 해라”",
-      "desc": "2021년 국민의힘 대선 경선 당시 홍준표 전 대구시장 선거캠프에서 정치자금을 부정하게 지출한 혐의를 받는 관계자 6명이 재판에 넘겨졌다. 대구지방공소청은 정치자금법 위반 혐의로 ..",
-      "link": "https://www.mk.co.kr/news/politics/12206785",
-      "pubDate": "2026-11-12T10:16:43.000Z",
-      "source": "매일경제",
-      "cat": "경제",
-      "summary": "2021년 국민의힘 대선 경선 당시 홍준표 전 대구시장 선거캠프에서 정치자금을 부정하게 지출한 혐의를 받는 관계자 6명이 재판에 넘겨졌다. 대구",
-      "importance": 5
-    },
-    {
-      "title": "‘김치맨·원숭이’ 차별이란 차별은 다 당했는데…박항서 감독 징계한 태국축협",
-      "desc": "인종 차별에 박항서, 맞대응했다고 2경기 출전정지·벌금 53만원 부과 협회 “추가 갈등 일으켜선 안 돼” 차별발언 관중에도 2만바트 제재금태국 프로축구 2부리그 깐짜나부리 파워FC..",
-      "link": "https://www.mk.co.kr/news/world/12206780",
-      "pubDate": "2026-11-12T10:00:58.000Z",
-      "source": "매일경제",
-      "cat": "경제",
-      "summary": "인종 차별에 박항서, 맞대응했다고 2경기 출전정지·벌금 53만원 부과 협회 “추가 갈등 일으켜선 안 돼” 차별발언 관중에도 2만바트 제재금태국 ",
+      "title": "건물값 하락에 수익률 ‘뚝’…상업용 부동산 침체 - KBS 뉴스",
+      "desc": "건물값 하락에 수익률 ‘뚝’…상업용 부동산 침체 KBS 뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE10T29DZzdmUGJJSExObTVPcE54Z3lYZE9MUzVEZXlaYU9rRnlDUXVOcnpaVmZ5WDFmTWJOd0RBMHZyMkJTLU1ld2VOWVNBZWs2NERmZE1VRHpLM2J2cGVidWlhd2g1UQ?oc=5",
+      "pubDate": "2026-11-12T10:19:00.000Z",
+      "source": "Google 부동산",
+      "cat": "부동산",
+      "summary": "건물값 하락에 수익률 ‘뚝’…상업용 부동산 침체 KBS 뉴스",
       "importance": 5
     },
     {
@@ -414,6 +444,16 @@
       "importance": 5
     },
     {
+      "title": "K-온디바이스 AI반도체, ‘상생’으로 속도낸다 - 헬로티",
+      "desc": "K-온디바이스 AI반도체, ‘상생’으로 속도낸다 헬로티",
+      "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5yZThCUThOYWpQcUtZT0EtSGhDWHNuaUlIanhGX2dZWWswV2w4MTBvVVVOOE1faDVuRUp2QjE1M3JpTURwSU1FMkZlX09zeW5IYmFkSm0yczlMM1BXRUhF?oc=5",
+      "pubDate": "2026-11-12T07:09:01.000Z",
+      "source": "Google IT",
+      "cat": "IT",
+      "summary": "K-온디바이스 AI반도체, ‘상생’으로 속도낸다 헬로티",
+      "importance": 5
+    },
+    {
       "title": "의뢰인 몰래 상속재산 꿀꺽…변호사 입건 - 제민일보",
       "desc": "의뢰인 몰래 상속재산 꿀꺽…변호사 입건 제민일보",
       "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5aZTNlRlUtTzFZY1phOHpVRTAtLWVCZ3ZJN3hYR2lmTEtWSGhQSm9GUVpURHdhd1hqcmU2NUQxdUJFMHNhT2xuRHkxSnlSdXRmaTJpQ3VORDM0VVpibm53c2xWczBnN1k?oc=5",
@@ -431,6 +471,16 @@
       "source": "Google 부동산",
       "cat": "부동산",
       "summary": "부동산원, 부동산 데이터 활용 교육 실시…교육생 모집 뉴시스",
+      "importance": 5
+    },
+    {
+      "title": "김민석·\"부동산 정책 일관\" 종부세 엇박자 불식 주력, 정청래 갈등엔 \"만나서 대화\" - 국제신문",
+      "desc": "김민석·\"부동산 정책 일관\" 종부세 엇박자 불식 주력, 정청래 갈등엔 \"만나서 대화\" 국제신문여당, 종부세 유지 가닥…전월세 등 부동산 민심 악화에 고심 한겨레靑 \"당청 세제 이견 없다\"에… 與 부동산 토론회 흐지부지 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQT0hTbEc5azY3enB1MjM0VkJLaUgtdEFMTmYzVUM3SlJpcV9jNlo1UVhzWW02R1hhN1V1NThFanN0bGxsSy1RZ2NzZUxINThha0lObGtad290ajR4aXFtcDJNcFdtT2VPNERaWXRBdUR2LVpTS3ZjbDdJN3BQNUtkbzlQVld6bzRyUV9nZFVB?oc=5",
+      "pubDate": "2026-11-12T06:55:00.000Z",
+      "source": "Google 부동산",
+      "cat": "부동산",
+      "summary": "김민석·\"부동산 정책 일관\" 종부세 엇박자 불식 주력, 정청래 갈등엔 \"만나서 대화\" 국제신문여당, 종부세 유지 가닥…전월세 등 부동산 민심 악",
       "importance": 5
     },
     {
@@ -464,23 +514,13 @@
       "importance": 5
     },
     {
-      "title": "강남3구 외에도…KB부동산 \"서울 8개구 아파트값 상승폭 축소\" - 연합인포맥스",
-      "desc": "강남3구 외에도…KB부동산 \"서울 8개구 아파트값 상승폭 축소\" 연합인포맥스",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBoM1hsdXdRVUZKckEzbTJ0NmZFVmhVYVNZVGJqMjY2V2lCQ09saXMzSll5eUhaSUlLNm9kcE9BcFFhVE9sU20wLWFheURkS3dKWWZwN0RUY3VSaHRKRHY0ZXNzNV9UdkpYeUcwTV9RazE?oc=5",
-      "pubDate": "2026-11-12T06:28:00.000Z",
+      "title": "신장식 \"여당 쪽 엇박자 걱정\"…최인호 \"부동산 정책 후퇴 없다\" - 뉴스1",
+      "desc": "신장식 \"여당 쪽 엇박자 걱정\"…최인호 \"부동산 정책 후퇴 없다\" 뉴스1",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE4zeGVFYTdvbk1JUW53U29lMXJrbU1wem1RNjRxcXU2RjEwdG84MzJwT2ZFRG0xYXVrc0ZpWDJOclBwZWdvRmlpT013WW9WU08tVmhZZGZBMXBJZw?oc=5",
+      "pubDate": "2026-11-12T05:27:02.000Z",
       "source": "Google 부동산",
       "cat": "부동산",
-      "summary": "강남3구 외에도…KB부동산 \"서울 8개구 아파트값 상승폭 축소\" 연합인포맥스",
-      "importance": 5
-    },
-    {
-      "title": "사진전 '문화유산에서 문화외교로': 국립대학교 문묘와 국제 친구들을 연결하다. - Vietnam.vn",
-      "desc": "사진전 '문화유산에서 문화외교로': 국립대학교 문묘와 국제 친구들을 연결하다. Vietnam.vn",
-      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOR19PdVdlWGZRQ09xUmpEeVpFOEVBblcxY3hZa2hNR0JKcTlpcHptQnJ5Vlh3WlplTTFBckRpTFozV05kTEtFdjV3bUs0OW5XVlZDemE3bU9rdzFmNTl0R0EtTXJQTTJ1R3oxMnZoSFBzUmxYT3BHal9ESnEwSWlZN0pLQ0VjcFc2UWw3cnJGX2tNbjZtTzVhOXJ3T01HRGRzQ214UXF5UnFENDd6OWxLUjEwNjN5MS1PVmViamZ3?oc=5",
-      "pubDate": "2026-11-12T05:51:43.000Z",
-      "source": "Google 국제",
-      "cat": "국제",
-      "summary": "사진전 '문화유산에서 문화외교로': 국립대학교 문묘와 국제 친구들을 연결하다. Vietnam.vn",
+      "summary": "신장식 \"여당 쪽 엇박자 걱정\"…최인호 \"부동산 정책 후퇴 없다\" 뉴스1",
       "importance": 5
     },
     {
@@ -494,16 +534,6 @@
       "importance": 5
     },
     {
-      "title": "서울 아파트값 지수 보합…강동·성동은 하락 전환 - 스트레이트뉴스",
-      "desc": "서울 아파트값 지수 보합…강동·성동은 하락 전환 스트레이트뉴스",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9aeVRzNlVjdFR4bWhPRnFYUDN5TE5JOWJDMVgwMHZHN3ZrYjF2R3FrbUdsakNsUk1pZUpFaHgxYW5pcV9zY21OSXlaNnFwa3pkdUdoSy13VEVONFdnQlYxNHdtb3BPVFNHcV83Y08td2pXX28?oc=5",
-      "pubDate": "2026-11-12T05:00:00.000Z",
-      "source": "Google 부동산",
-      "cat": "부동산",
-      "summary": "서울 아파트값 지수 보합…강동·성동은 하락 전환 스트레이트뉴스",
-      "importance": 5
-    },
-    {
       "title": "인천 장봉도 해상서 모터보트 시동 꺼져 표류 - 일간경기",
       "desc": "인천 장봉도 해상서 모터보트 시동 꺼져 표류 일간경기",
       "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9jMzZWX0ZQQUFOaWxwRWJzV0JFUHVjelFOZVdTbjZjaUdMUjhYeUdCc2kzSEl4czVxZTZ3V1Jnckl6RFQ3Unh2eUdrdGoxWHplYWczSkNfOUJmMnA5Z3NJOVN2c1J0a1pm?oc=5",
@@ -511,16 +541,6 @@
       "source": "Google 사회",
       "cat": "사회",
       "summary": "인천 장봉도 해상서 모터보트 시동 꺼져 표류 일간경기",
-      "importance": 5
-    },
-    {
-      "title": "3분기 전국 부동산 거래량 22% 감소…서울 아파트도 44% ‘뚝’ - 브릿지경제",
-      "desc": "3분기 전국 부동산 거래량 22% 감소…서울 아파트도 44% ‘뚝’ 브릿지경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5LeDBOeVVkeUNGb2JxdkRVY1NKQ0RsRzZnQzY4TlNFbEwweTIwU1k1YTFIcGVtT0JqX0JCeXZWMFdhN3NJR1BzT2FyQVE5QTJtWTJIbDdRYkx3QQ?oc=5",
-      "pubDate": "2026-11-12T04:47:00.000Z",
-      "source": "Google 부동산",
-      "cat": "부동산",
-      "summary": "3분기 전국 부동산 거래량 22% 감소…서울 아파트도 44% ‘뚝’ 브릿지경제",
       "importance": 5
     },
     {
@@ -594,6 +614,16 @@
       "importance": 5
     },
     {
+      "title": "G7 외교장관 \"북 대러 군사지원 중단·철병 촉구\" - 기독일보",
+      "desc": "G7 외교장관 \"북 대러 군사지원 중단·철병 촉구\" 기독일보",
+      "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9GR3ZGUEhRNl9VbVhELWlzby1IRi1ZdzZZQUpYTFloRmo4SGlvckR4QnNhWUxxT0dWZDZuVzZPbFBSVFJQQm1jVzhTXzNRUXVoZ0Fid1d0c9IBXEFVX3lxTFBnMDhORy1laHBrLVdPUjNYWXNhN19ib3Q0bjh4NHJfdTFMMVY5RFVPNHJFZ3MwdmFTWDJmVmNwQ2xSWnZxZi1lR2VBZmRLQThYS3FjS21fNi1EbXB2?oc=5",
+      "pubDate": "2026-11-12T01:44:12.000Z",
+      "source": "Google 국제",
+      "cat": "국제",
+      "summary": "G7 외교장관 \"북 대러 군사지원 중단·철병 촉구\" 기독일보",
+      "importance": 5
+    },
+    {
       "title": "광명시 다가구주택서 불…3명 중상 - 기호일보",
       "desc": "광명시 다가구주택서 불…3명 중상 기호일보",
       "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBTNDV6VkxiN204TUVUSlRKbXptMXNfcDVCY1FKOHJVVHh2SWVkUTVWYVRXSnRKUmNOY0VJQ3BKOHFsRGM2SExaVXZRLWQzRjN4S3Q5U1c1eU1wSnFtdE9iQjlGU3IxN3NzRkhNSm1ETQ?oc=5",
@@ -604,13 +634,13 @@
       "importance": 5
     },
     {
-      "title": "[전격시사] 이준석 개혁신당 의원 - “李 부동산 정책으로 모두가 고통받아…공급 확 늘리고 세금 확 줄여야” ‘빚내서 집 살걸’ 부동산 포럼, 왜? - KBS 뉴스",
-      "desc": "[전격시사] 이준석 개혁신당 의원 - “李 부동산 정책으로 모두가 고통받아…공급 확 늘리고 세금 확 줄여야” ‘빚내서 집 살걸’ 부동산 포럼, 왜? KBS 뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5NM2xHb3AwTmRGZmJyaFlnc0ppS0NwNnpHdm1YUmF3MHJfVmk0Wmo4Mi0yeUI4MWhYUFIzTGpGQTVZR3l3YXdla0dVMW1rOGUxNDgyVE52U1J3VTA?oc=5",
-      "pubDate": "2026-11-12T00:41:00.000Z",
+      "title": "부동산 등기부열람·발급 수수료 400원씩 인상…공인중개사 반발 - 연합뉴스",
+      "desc": "부동산 등기부열람·발급 수수료 400원씩 인상…공인중개사 반발 연합뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE0yWWVhME5IYU1hYlBoUHQ0dGJPU3ZPRjJ1R3ZrUUNTM3VYYnl2NzJRcnQ2MUhENTFjYjZ6bm05ckNpOFdlUU82dWtuZmxpd1ZEd3FpeHpDSFpRQTjSAWBBVV95cUxQVVl6RGVKQk1yUzFlcDZGU29xekd1ZjlwR25JRGZqOHo0TWFpbjlpUHBFQ0ZtWFphTzhIRWE0UXQ3U25MV0p4dXl3ZmU2SEJwME91U25JamVnWlhiTGVQMGE?oc=5",
+      "pubDate": "2026-11-12T01:14:01.000Z",
       "source": "Google 부동산",
       "cat": "부동산",
-      "summary": "[전격시사] 이준석 개혁신당 의원 - “李 부동산 정책으로 모두가 고통받아…공급 확 늘리고 세금 확 줄여야” ‘빚내서 집 살걸’ 부동산 포럼, ",
+      "summary": "부동산 등기부열람·발급 수수료 400원씩 인상…공인중개사 반발 연합뉴스",
       "importance": 5
     },
     {
@@ -644,26 +674,6 @@
       "importance": 5
     },
     {
-      "title": "\"요즘 부동산 썰렁\" 서울·경기 매물 쌓이는데...'이 동네' 신고가 - 머니투데이 - 머니투데이",
-      "desc": "\"요즘 부동산 썰렁\" 서울·경기 매물 쌓이는데...'이 동네' 신고가 - 머니투데이 머니투데이",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE94MzQ3a0hvUTJ2TVYtNVA2LVUzbVFsajF1OGNVOTRiMjZwOUs2Y0t0Z3FBZzlsZU94MzNOdGVjemtBaUJEbVFvcXI3NmxnbmhFMGdNMEkybUFxbVJsWnBOeS1uLUJaeS1XVnfSAW9BVV95cUxPUkZQdV9iTGFOZEpkeEF4WkZtOUp0TjNFekdCSnZQMmdnaXg5eVYxdzc2UXJWb3laZ2lSbjljZ1NoU2k4OXlocU11M2p2N3hvNWVNVHdvVk44MDVMMmVpVUM2X1dua2N3RE5ZVlFvcFU?oc=5",
-      "pubDate": "2026-11-11T21:00:00.000Z",
-      "source": "Google 부동산",
-      "cat": "부동산",
-      "summary": "\"요즘 부동산 썰렁\" 서울·경기 매물 쌓이는데...'이 동네' 신고가 - 머니투데이 머니투데이",
-      "importance": 5
-    },
-    {
-      "title": "어제의 사건·사고 브리핑｜2026년 11월 11일 - 데일리25",
-      "desc": "어제의 사건·사고 브리핑｜2026년 11월 11일 데일리25",
-      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1ZMEp0Tmt6ZnVoblR3ZVFnVXdGWWR1c0RBN2FuTHBxR0tZeGFfTS0tREF5ei16YUJPZS15R3pmMWRDY24tQnhXemstVTZIOHlYMng1SEFVRjg4WjV0S0dFXzRTbTd1RkZuWlBxNA?oc=5",
-      "pubDate": "2026-11-11T17:14:04.000Z",
-      "source": "Google 사회",
-      "cat": "사회",
-      "summary": "어제의 사건·사고 브리핑｜2026년 11월 11일 데일리25",
-      "importance": 5
-    },
-    {
       "title": "여야 대치 속에도 '한솥밥'…국회에 희미해진 정치의 낭만 - 더팩트",
       "desc": "여야 대치 속에도 '한솥밥'…국회에 희미해진 정치의 낭만 더팩트",
       "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFA3S3RKM2U5RS1MN2hGZmRaRU9lSUV2N2J0Y0NmQXZBckVJZ20xaFJoVV8xbDB6MlJRRlgwazIyRWEtdGQwR0NFUEYtbHFiNUVLYmx4aHZ6emTSAVNBVV95cUxOMFZmVGt5bUtkLWVNYXd0cGVvaktrUTFUT3hVUmlpTDZLVkNtQ2xlZzl4WHZKcUhmT2FyV1B3Mzl3NnJENUtPX0pBNDNyaXpfa0RlYw?oc=5",
@@ -671,16 +681,6 @@
       "source": "Google 정치",
       "cat": "정치",
       "summary": "여야 대치 속에도 '한솥밥'…국회에 희미해진 정치의 낭만 더팩트",
-      "importance": 5
-    },
-    {
-      "title": "한·우크라이나 외교장관 회담…“양국 현안 원만히 해결” - ACN아시아콘텐츠뉴스",
-      "desc": "한·우크라이나 외교장관 회담…“양국 현안 원만히 해결” ACN아시아콘텐츠뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE44ZU5lWDdEY0pvWUNCVTdNVzdUWGVIdElUY3hDQTNjT3k4M1BzYmp1ZlBTNzRFdGgzbWNKWHNXVXJhQ0hBTVM3Tm9nUkVmRWVheHFtT05ZejJYcFNrV1NpQjBVYTlGT2M5?oc=5",
-      "pubDate": "2026-11-11T13:20:20.000Z",
-      "source": "Google 국제",
-      "cat": "국제",
-      "summary": "한·우크라이나 외교장관 회담…“양국 현안 원만히 해결” ACN아시아콘텐츠뉴스",
       "importance": 5
     },
     {
@@ -704,6 +704,16 @@
       "importance": 5
     },
     {
+      "title": "한국외대 국제전략연구원, 싱가포르·말레이시아서 한·아세안 정책대화 - 교수신문",
+      "desc": "한국외대 국제전략연구원, 싱가포르·말레이시아서 한·아세안 정책대화 교수신문",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5NcTJvSllPczNSSU9xTDJScVlsN25VeTZ3OXRGM21lV2ZHVG5yUVg0dldueXh4ejU0Z25VSDVnRTUweEhvT1NNUmNOV0UtUktYWnZFYmdJSVJKZXdUSExveVNMR2N2QXM?oc=5",
+      "pubDate": "2026-11-11T09:00:24.000Z",
+      "source": "Google 국제",
+      "cat": "국제",
+      "summary": "한국외대 국제전략연구원, 싱가포르·말레이시아서 한·아세안 정책대화 교수신문",
+      "importance": 5
+    },
+    {
       "title": "황운하 대표발의 행정수도특별법, 국회 법안소위 조문 심사 완료 - 경충일보",
       "desc": "황운하 대표발의 행정수도특별법, 국회 법안소위 조문 심사 완료 경충일보",
       "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1hbWlzQVNFMnJGTlZ2d2VTeWJYOG4tOFY4WU5WQlhqam8yN2s0ZlI4VzAzbGREQ2Q4cVduV1RlTEo3S0dheU5FR2tLUXBjUDRFOWQ2ZEgxcDM?oc=5",
@@ -711,16 +721,6 @@
       "source": "Google 정치",
       "cat": "정치",
       "summary": "황운하 대표발의 행정수도특별법, 국회 법안소위 조문 심사 완료 경충일보",
-      "importance": 5
-    },
-    {
-      "title": "\"고금리發 글로벌 부동산 조정, 저가매수 기회\" - 매일경제 마켓",
-      "desc": "\"고금리發 글로벌 부동산 조정, 저가매수 기회\" 매일경제 마켓",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9HMy12OFpaLTktc3RTc2pqTTVfaFJ1NlJxQlVOTE9zbzBRVzdrbDVub3lTazhlX3JnbmMxSTJGSW9uV1RzdVNtQ3RrNVVzMWZhaGc?oc=5",
-      "pubDate": "2026-11-11T08:37:18.000Z",
-      "source": "Google 부동산",
-      "cat": "부동산",
-      "summary": "\"고금리發 글로벌 부동산 조정, 저가매수 기회\" 매일경제 마켓",
       "importance": 5
     },
     {
@@ -734,6 +734,16 @@
       "importance": 5
     },
     {
+      "title": "“빚내서 집사라” 최경환, 정부 부동산 정책에 “미친 규제” 비판 쏟아내 - 한겨레",
+      "desc": "“빚내서 집사라” 최경환, 정부 부동산 정책에 “미친 규제” 비판 쏟아내 한겨레",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFB5OGZvRklIcHFaOUxhaTdDOVRyNGZJYm56ZE43bXJzWnJNVXJtcW55cWtmRGJiREhzNnNXRGRTMzIwajhNS1pxTnduQ3Z6SjMzWjNadDRDRXliR0N1dXJHdWNJb25hUk9uTnZPYWNFUXBiZFB6?oc=5",
+      "pubDate": "2026-11-11T07:58:00.000Z",
+      "source": "Google 부동산",
+      "cat": "부동산",
+      "summary": "“빚내서 집사라” 최경환, 정부 부동산 정책에 “미친 규제” 비판 쏟아내 한겨레",
+      "importance": 5
+    },
+    {
       "title": "4·3왜곡처벌법 속도…정기 국회 처리되나 - 제민일보",
       "desc": "4·3왜곡처벌법 속도…정기 국회 처리되나 제민일보",
       "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE15WWQtMjJ0dmJjNm5qZkF4cDNXcjFYd2lTeU8zbDNnUjlNNm50aC1LcGljOEU0ZEd3MmkyUlh6WVZwSzB6QkNXbDNmTVRoejJjN2R4b2pNQXdGamFqTTUtNEVCMk9jMWM?oc=5",
@@ -744,6 +754,16 @@
       "importance": 5
     },
     {
+      "title": "부동산 등기부 수수료 최대 57% 인상 추진…\"국민 부담 과하다\" 반발 확산 - 경기일보",
+      "desc": "부동산 등기부 수수료 최대 57% 인상 추진…\"국민 부담 과하다\" 반발 확산 경기일보",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9GaEZfaVFxcDU5cmI1OFdJcE5YY0tSWnhsUWxqamJ0V2ZvTTBJOWN2Y1VXV1NKRm44NURyRnVaUUNDajI1d2FCZkNPZE5hZkpzYXd4TUNaMWVjU0E?oc=5",
+      "pubDate": "2026-11-11T06:19:02.000Z",
+      "source": "Google 부동산",
+      "cat": "부동산",
+      "summary": "부동산 등기부 수수료 최대 57% 인상 추진…\"국민 부담 과하다\" 반발 확산 경기일보",
+      "importance": 5
+    },
+    {
       "title": "옥천서 노부부 숨진 채 발견… 일산화탄소 중독 추정 - 중부매일",
       "desc": "옥천서 노부부 숨진 채 발견… 일산화탄소 중독 추정 중부매일",
       "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFAzZ2pmNWc5MTVLbEg5c1p3NFVZVjFwVWZEVXRTUnM0aVZEYzRmNkcxb3BqdWx0RjF1THdBLVJOdDd0cFpOQXgydm1WM01lNDhrVTVUa2VhbTJPZUZfaF9wSzNMa0tReFBYbkHSAW5BVV95cUxPdDRYNl90QUFPX1dvZVVYXzYwdnI1SXd3RktnWW1HNWZObTRLSEg1aW9YRFRSdnFua3BtbThONE84YWVtWjNQZmlKazNubVI4eGFCdE5kTVc0ZlNlb21IUWZaQVRwYUJDOUdZSlJoQQ?oc=5",
@@ -751,6 +771,16 @@
       "source": "Google 사회",
       "cat": "사회",
       "summary": "옥천서 노부부 숨진 채 발견… 일산화탄소 중독 추정 중부매일",
+      "importance": 5
+    },
+    {
+      "title": "최민희, 국회 기자들에 '하이에나 떼들' 비하 발언 - 한국일보",
+      "desc": "최민희, 국회 기자들에 '하이에나 떼들' 비하 발언 한국일보",
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFByT2FCZ1g5dUtkSmJQQ3pjbFFuSjJGNUxWdjFtZXNvLXdXRjlOdUw4bFJYekRRZ3VhVjFMaEFtVEF1S1FqR1Qzal9JOW51VEYzYUUwdzN1RWgwZGs1N19DMThjakFXSGZJMnh0RkVB0gFzQVVfeXFMUFpPd3FsbzNiQTFqRzJvVmJtWVNQSHlPbVRvNzBseThoUDc5Z1E0d3RLVFUwenNacnpnblJTdWtKZnp2Q1h3WFVFUDdXaENaSktmSnJZVTRIdm9VdEdZdEhpRVd0cGU2SjB2X0VJNk55ZGl2UQ?oc=5",
+      "pubDate": "2026-11-11T02:35:00.000Z",
+      "source": "Google 정치",
+      "cat": "정치",
+      "summary": "최민희, 국회 기자들에 '하이에나 떼들' 비하 발언 한국일보",
       "importance": 5
     },
     {
@@ -874,16 +904,6 @@
       "importance": 5
     },
     {
-      "title": "안민석 경기도교육감 “국회가 교사 정치기본권 보장 위한 법률 개정 나서야” - 중부일보",
-      "desc": "안민석 경기도교육감 “국회가 교사 정치기본권 보장 위한 법률 개정 나서야” 중부일보",
-      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9iWnk4a29KUEZVZE1wSndReFg3MFVTX1NDZGY0SVNzZVFWcTQwWUtOSjBOSWxSUmpiQU5DWWJfM01QNjMxT1JWMHFOMFZWQjlCcHA5cXlaT3hOX0ZSMlVrNWtPUVdMR1ZGZ1NKYnA5NA?oc=5",
-      "pubDate": "2026-11-10T06:30:00.000Z",
-      "source": "Google 정치",
-      "cat": "정치",
-      "summary": "안민석 경기도교육감 “국회가 교사 정치기본권 보장 위한 법률 개정 나서야” 중부일보",
-      "importance": 5
-    },
-    {
       "title": "AI 반도체 생태계에 변화, \"제로섬 경쟁은 없다\" - 이코리아",
       "desc": "AI 반도체 생태계에 변화, \"제로섬 경쟁은 없다\" 이코리아",
       "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9NNWxoYTQxNHN1ZHE5MlNLOU8xSmY0TlVLaEpmbUlweGhiQnE5RjA1Uk13WTZ4cnB2T0ktaktud3V5NDF1ek9BeElSRE8zaHBmYjJFOUp3ak9kYnpFeVRXYmFDZHBRV0lsbkNoQ3hiaw?oc=5",
@@ -981,26 +1001,6 @@
       "source": "Google 국제",
       "cat": "국제",
       "summary": "외교차관, 국제수로기구와 부산 인프라센터 건립 논의 연합뉴스 한민족센터",
-      "importance": 5
-    },
-    {
-      "title": "축구 1부리그 복귀·안세영 11승…'스포츠 명가' 삼성, 부활 청신호 - 한국경제",
-      "desc": "축구 1부리그 복귀·안세영 11승…'스포츠 명가' 삼성, 부활 청신호 한국경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5TdDJ3c3lfSnNmNlNHanFMU282azVjLUNQbEQ0cDdzcG53Mnc5bUp4ZkZ4d1h3V1E5dXlOSndvU3B4NkN6dTJHb1V3WHlla0JOR3M4dXh0Mm5Jdw?oc=5",
-      "pubDate": "2026-11-09T09:21:18.000Z",
-      "source": "Google 스포츠",
-      "cat": "스포츠",
-      "summary": "축구 1부리그 복귀·안세영 11승…'스포츠 명가' 삼성, 부활 청신호 한국경제",
-      "importance": 5
-    },
-    {
-      "title": "야구·축구·농구 동반질주 … 삼성 스포츠의 반격 - 매일경제",
-      "desc": "야구·축구·농구 동반질주 … 삼성 스포츠의 반격 매일경제",
-      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFAzdm83MXEyOEdfYkxNNDdZR2lNbkZjUjk0aFJxckJNa1lHQ1JrOTBqUGhYTEZ2Nl9QcXQ3azQwbm5fZHZDNmlQZF91ZkZ0X2RYOUxj?oc=5",
-      "pubDate": "2026-11-09T08:20:11.000Z",
-      "source": "Google 스포츠",
-      "cat": "스포츠",
-      "summary": "야구·축구·농구 동반질주 … 삼성 스포츠의 반격 매일경제",
       "importance": 5
     }
   ]
